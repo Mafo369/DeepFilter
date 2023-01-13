@@ -1,0 +1,731 @@
+(DeepFilter) ➜ DeepFilter (master) ✗ python3 DeepFilter_PCG.py
+Using TensorFlow backend.
+/home/mafo/anaconda3/envs/DeepFilter/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:516: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint8 = np.dtype([("qint8", np.int8, 1)])
+/home/mafo/anaconda3/envs/DeepFilter/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:517: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_quint8 = np.dtype([("quint8", np.uint8, 1)])
+/home/mafo/anaconda3/envs/DeepFilter/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:518: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint16 = np.dtype([("qint16", np.int16, 1)])
+/home/mafo/anaconda3/envs/DeepFilter/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:519: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_quint16 = np.dtype([("quint16", np.uint16, 1)])
+/home/mafo/anaconda3/envs/DeepFilter/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:520: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint32 = np.dtype([("qint32", np.int32, 1)])
+/home/mafo/anaconda3/envs/DeepFilter/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:525: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  np_resource = np.dtype([("resource", np.ubyte, 1)])
+/home/mafo/anaconda3/envs/DeepFilter/lib/python3.7/site-packages/tensorboard/compat/tensorflow_stub/dtypes.py:541: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint8 = np.dtype([("qint8", np.int8, 1)])
+/home/mafo/anaconda3/envs/DeepFilter/lib/python3.7/site-packages/tensorboard/compat/tensorflow_stub/dtypes.py:542: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_quint8 = np.dtype([("quint8", np.uint8, 1)])
+/home/mafo/anaconda3/envs/DeepFilter/lib/python3.7/site-packages/tensorboard/compat/tensorflow_stub/dtypes.py:543: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint16 = np.dtype([("qint16", np.int16, 1)])
+/home/mafo/anaconda3/envs/DeepFilter/lib/python3.7/site-packages/tensorboard/compat/tensorflow_stub/dtypes.py:544: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_quint16 = np.dtype([("quint16", np.uint16, 1)])
+/home/mafo/anaconda3/envs/DeepFilter/lib/python3.7/site-packages/tensorboard/compat/tensorflow_stub/dtypes.py:545: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint32 = np.dtype([("qint32", np.int32, 1)])
+/home/mafo/anaconda3/envs/DeepFilter/lib/python3.7/site-packages/tensorboard/compat/tensorflow_stub/dtypes.py:550: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  np_resource = np.dtype([("resource", np.ubyte, 1)])
+(60, 512, 1)
+(50, 512, 1)
+Deep Learning pipeline: Training the model for exp Multibranch LANLD
+WARNING:tensorflow:From /home/mafo/anaconda3/envs/DeepFilter/lib/python3.7/site-packages/keras/backend/tensorflow_backend.py:66: The name tf.get_default_graph is deprecated. Please use tf.compat.v1.get_default_graph instead.
+
+WARNING:tensorflow:From /home/mafo/anaconda3/envs/DeepFilter/lib/python3.7/site-packages/keras/backend/tensorflow_backend.py:541: The name tf.placeholder is deprecated. Please use tf.compat.v1.placeholder instead.
+
+WARNING:tensorflow:From /home/mafo/anaconda3/envs/DeepFilter/lib/python3.7/site-packages/keras/backend/tensorflow_backend.py:4432: The name tf.random_uniform is deprecated. Please use tf.random.uniform instead.
+
+WARNING:tensorflow:From /home/mafo/anaconda3/envs/DeepFilter/lib/python3.7/site-packages/keras/backend/tensorflow_backend.py:148: The name tf.placeholder_with_default is deprecated. Please use tf.compat.v1.placeholder_with_default instead.
+
+WARNING:tensorflow:From /home/mafo/anaconda3/envs/DeepFilter/lib/python3.7/site-packages/keras/backend/tensorflow_backend.py:3733: calling dropout (from tensorflow.python.ops.nn_ops) with keep_prob is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `rate` instead of `keep_prob`. Rate should be set to `rate = 1 - keep_prob`.
+
+ Multibranch_LANLD
+
+Model: "model_1"
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to
+==================================================================================================
+input_1 (InputLayer)            (None, 512, 1)       0
+__________________________________________________________________________________________________
+conv1d_1 (Conv1D)               (None, 512, 8)       32          input_1[0][0]
+__________________________________________________________________________________________________
+conv1d_2 (Conv1D)               (None, 512, 8)       48          input_1[0][0]
+__________________________________________________________________________________________________
+conv1d_3 (Conv1D)               (None, 512, 8)       80          input_1[0][0]
+__________________________________________________________________________________________________
+conv1d_4 (Conv1D)               (None, 512, 8)       128         input_1[0][0]
+__________________________________________________________________________________________________
+conv1d_5 (Conv1D)               (None, 512, 8)       32          input_1[0][0]
+__________________________________________________________________________________________________
+conv1d_6 (Conv1D)               (None, 512, 8)       48          input_1[0][0]
+__________________________________________________________________________________________________
+conv1d_7 (Conv1D)               (None, 512, 8)       80          input_1[0][0]
+__________________________________________________________________________________________________
+conv1d_8 (Conv1D)               (None, 512, 8)       128         input_1[0][0]
+__________________________________________________________________________________________________
+concatenate_1 (Concatenate)     (None, 512, 64)      0           conv1d_1[0][0]
+                                                                 conv1d_2[0][0]
+                                                                 conv1d_3[0][0]
+                                                                 conv1d_4[0][0]
+                                                                 conv1d_5[0][0]
+                                                                 conv1d_6[0][0]
+                                                                 conv1d_7[0][0]
+                                                                 conv1d_8[0][0]
+__________________________________________________________________________________________________
+dropout_1 (Dropout)             (None, 512, 64)      0           concatenate_1[0][0]
+__________________________________________________________________________________________________
+batch_normalization_1 (BatchNor (None, 512, 64)      256         dropout_1[0][0]
+__________________________________________________________________________________________________
+conv1d_9 (Conv1D)               (None, 512, 10)      3210        batch_normalization_1[0][0]
+__________________________________________________________________________________________________
+conv1d_10 (Conv1D)              (None, 512, 10)      5770        batch_normalization_1[0][0]
+__________________________________________________________________________________________________
+conv1d_11 (Conv1D)              (None, 512, 10)      9610        batch_normalization_1[0][0]
+__________________________________________________________________________________________________
+conv1d_12 (Conv1D)              (None, 512, 10)      3210        batch_normalization_1[0][0]
+__________________________________________________________________________________________________
+conv1d_13 (Conv1D)              (None, 512, 10)      5770        batch_normalization_1[0][0]
+__________________________________________________________________________________________________
+conv1d_14 (Conv1D)              (None, 512, 10)      9610        batch_normalization_1[0][0]
+__________________________________________________________________________________________________
+concatenate_2 (Concatenate)     (None, 512, 60)      0           conv1d_9[0][0]
+                                                                 conv1d_10[0][0]
+                                                                 conv1d_11[0][0]
+                                                                 conv1d_12[0][0]
+                                                                 conv1d_13[0][0]
+                                                                 conv1d_14[0][0]
+__________________________________________________________________________________________________
+dropout_2 (Dropout)             (None, 512, 60)      0           concatenate_2[0][0]
+__________________________________________________________________________________________________
+batch_normalization_2 (BatchNor (None, 512, 60)      240         dropout_2[0][0]
+__________________________________________________________________________________________________
+conv1d_15 (Conv1D)              (None, 512, 4)       724         batch_normalization_2[0][0]
+__________________________________________________________________________________________________
+conv1d_16 (Conv1D)              (None, 512, 4)       1204        batch_normalization_2[0][0]
+__________________________________________________________________________________________________
+conv1d_17 (Conv1D)              (None, 512, 4)       2164        batch_normalization_2[0][0]
+__________________________________________________________________________________________________
+conv1d_18 (Conv1D)              (None, 512, 4)       3604        batch_normalization_2[0][0]
+__________________________________________________________________________________________________
+conv1d_19 (Conv1D)              (None, 512, 4)       724         batch_normalization_2[0][0]
+__________________________________________________________________________________________________
+conv1d_20 (Conv1D)              (None, 512, 4)       1204        batch_normalization_2[0][0]
+__________________________________________________________________________________________________
+conv1d_21 (Conv1D)              (None, 512, 4)       2164        batch_normalization_2[0][0]
+__________________________________________________________________________________________________
+conv1d_22 (Conv1D)              (None, 512, 4)       3604        batch_normalization_2[0][0]
+__________________________________________________________________________________________________
+concatenate_3 (Concatenate)     (None, 512, 32)      0           conv1d_15[0][0]
+                                                                 conv1d_16[0][0]
+                                                                 conv1d_17[0][0]
+                                                                 conv1d_18[0][0]
+                                                                 conv1d_19[0][0]
+                                                                 conv1d_20[0][0]
+                                                                 conv1d_21[0][0]
+                                                                 conv1d_22[0][0]
+__________________________________________________________________________________________________
+dropout_3 (Dropout)             (None, 512, 32)      0           concatenate_3[0][0]
+__________________________________________________________________________________________________
+batch_normalization_3 (BatchNor (None, 512, 32)      128         dropout_3[0][0]
+__________________________________________________________________________________________________
+conv1d_23 (Conv1D)              (None, 512, 5)       805         batch_normalization_3[0][0]
+__________________________________________________________________________________________________
+conv1d_24 (Conv1D)              (None, 512, 5)       1445        batch_normalization_3[0][0]
+__________________________________________________________________________________________________
+conv1d_25 (Conv1D)              (None, 512, 5)       2405        batch_normalization_3[0][0]
+__________________________________________________________________________________________________
+conv1d_26 (Conv1D)              (None, 512, 5)       805         batch_normalization_3[0][0]
+__________________________________________________________________________________________________
+conv1d_27 (Conv1D)              (None, 512, 5)       1445        batch_normalization_3[0][0]
+__________________________________________________________________________________________________
+conv1d_28 (Conv1D)              (None, 512, 5)       2405        batch_normalization_3[0][0]
+__________________________________________________________________________________________________
+concatenate_4 (Concatenate)     (None, 512, 30)      0           conv1d_23[0][0]
+                                                                 conv1d_24[0][0]
+                                                                 conv1d_25[0][0]
+                                                                 conv1d_26[0][0]
+                                                                 conv1d_27[0][0]
+                                                                 conv1d_28[0][0]
+__________________________________________________________________________________________________
+dropout_4 (Dropout)             (None, 512, 30)      0           concatenate_4[0][0]
+__________________________________________________________________________________________________
+batch_normalization_4 (BatchNor (None, 512, 30)      120         dropout_4[0][0]
+__________________________________________________________________________________________________
+conv1d_29 (Conv1D)              (None, 512, 2)       182         batch_normalization_4[0][0]
+__________________________________________________________________________________________________
+conv1d_30 (Conv1D)              (None, 512, 2)       302         batch_normalization_4[0][0]
+__________________________________________________________________________________________________
+conv1d_31 (Conv1D)              (None, 512, 2)       542         batch_normalization_4[0][0]
+__________________________________________________________________________________________________
+conv1d_32 (Conv1D)              (None, 512, 2)       902         batch_normalization_4[0][0]
+__________________________________________________________________________________________________
+conv1d_33 (Conv1D)              (None, 512, 2)       182         batch_normalization_4[0][0]
+__________________________________________________________________________________________________
+conv1d_34 (Conv1D)              (None, 512, 2)       302         batch_normalization_4[0][0]
+__________________________________________________________________________________________________
+conv1d_35 (Conv1D)              (None, 512, 2)       542         batch_normalization_4[0][0]
+__________________________________________________________________________________________________
+conv1d_36 (Conv1D)              (None, 512, 2)       902         batch_normalization_4[0][0]
+__________________________________________________________________________________________________
+concatenate_5 (Concatenate)     (None, 512, 16)      0           conv1d_29[0][0]
+                                                                 conv1d_30[0][0]
+                                                                 conv1d_31[0][0]
+                                                                 conv1d_32[0][0]
+                                                                 conv1d_33[0][0]
+                                                                 conv1d_34[0][0]
+                                                                 conv1d_35[0][0]
+                                                                 conv1d_36[0][0]
+__________________________________________________________________________________________________
+dropout_5 (Dropout)             (None, 512, 16)      0           concatenate_5[0][0]
+__________________________________________________________________________________________________
+batch_normalization_5 (BatchNor (None, 512, 16)      64          dropout_5[0][0]
+__________________________________________________________________________________________________
+conv1d_37 (Conv1D)              (None, 512, 2)       162         batch_normalization_5[0][0]
+__________________________________________________________________________________________________
+conv1d_38 (Conv1D)              (None, 512, 2)       290         batch_normalization_5[0][0]
+__________________________________________________________________________________________________
+conv1d_39 (Conv1D)              (None, 512, 2)       482         batch_normalization_5[0][0]
+__________________________________________________________________________________________________
+conv1d_40 (Conv1D)              (None, 512, 2)       162         batch_normalization_5[0][0]
+__________________________________________________________________________________________________
+conv1d_41 (Conv1D)              (None, 512, 2)       290         batch_normalization_5[0][0]
+__________________________________________________________________________________________________
+conv1d_42 (Conv1D)              (None, 512, 2)       482         batch_normalization_5[0][0]
+__________________________________________________________________________________________________
+concatenate_6 (Concatenate)     (None, 512, 12)      0           conv1d_37[0][0]
+                                                                 conv1d_38[0][0]
+                                                                 conv1d_39[0][0]
+                                                                 conv1d_40[0][0]
+                                                                 conv1d_41[0][0]
+                                                                 conv1d_42[0][0]
+__________________________________________________________________________________________________
+dropout_6 (Dropout)             (None, 512, 12)      0           concatenate_6[0][0]
+__________________________________________________________________________________________________
+batch_normalization_6 (BatchNor (None, 512, 12)      48          dropout_6[0][0]
+__________________________________________________________________________________________________
+conv1d_43 (Conv1D)              (None, 512, 1)       109         batch_normalization_6[0][0]
+==================================================================================================
+Total params: 69,147
+Trainable params: 68,719
+Non-trainable params: 428
+__________________________________________________________________________________________________
+WARNING:tensorflow:From /home/mafo/anaconda3/envs/DeepFilter/lib/python3.7/site-packages/keras/optimizers.py:793: The name tf.train.Optimizer is deprecated. Please use tf.compat.v1.train.Optimizer instead.
+
+WARNING:tensorflow:From /home/mafo/anaconda3/envs/DeepFilter/lib/python3.7/site-packages/keras/backend/tensorflow_backend.py:1033: The name tf.assign_add is deprecated. Please use tf.compat.v1.assign_add instead.
+
+Train on 35 samples, validate on 15 samples
+2023-01-12 14:02:42.654278: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 AVX512F FMA
+2023-01-12 14:02:42.690390: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2304000000 Hz
+2023-01-12 14:02:42.691742: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x55ec6fb68df0 executing computations on platform Host. Devices:
+2023-01-12 14:02:42.691772: I tensorflow/compiler/xla/service/service.cc:175]   StreamExecutor device (0): <undefined>, <undefined>
+2023-01-12 14:02:42.692665: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcuda.so.1
+2023-01-12 14:02:42.717426: E tensorflow/stream_executor/cuda/cuda_driver.cc:318] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2023-01-12 14:02:42.717482: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:169] retrieving CUDA diagnostic information for host: mafo
+2023-01-12 14:02:42.717494: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: mafo
+2023-01-12 14:02:42.717673: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:200] libcuda reported version is: 510.85.2
+2023-01-12 14:02:42.717707: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:204] kernel reported version is: 510.85.2
+2023-01-12 14:02:42.717716: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:310] kernel version seems to match DSO: 510.85.2
+2023-01-12 14:02:45.748853: W tensorflow/compiler/jit/mark_for_compilation_pass.cc:1412] (One-time warning): Not using XLA:CPU for cluster because envvar TF_XLA_FLAGS=--tf_xla_cpu_global_jit was not set.  If you want XLA:CPU, either set that envvar, or use experimental_jit_scope to enable XLA:CPU.  To confirm that XLA is active, pass --vmodule=xla_compilation_cache=1 (as a proper command-line flag, not via TF_XLA_FLAGS) or set the envvar XLA_FLAGS=--xla_hlo_profile.
+WARNING:tensorflow:From /home/mafo/anaconda3/envs/DeepFilter/lib/python3.7/site-packages/keras/callbacks.py:1122: The name tf.summary.merge_all is deprecated. Please use tf.compat.v1.summary.merge_all instead.
+
+WARNING:tensorflow:From /home/mafo/anaconda3/envs/DeepFilter/lib/python3.7/site-packages/keras/callbacks.py:1128: The name tf.summary.FileWriter is deprecated. Please use tf.compat.v1.summary.FileWriter instead.
+
+Epoch 1/1000
+35/35 [==============================] - 6s 163ms/step - loss: 356502.8750 - mean_squared_error: 256.4892 - mean_absolute_error: 10.3523 - ssd_loss: 131322.4375 - mad_loss: 4503.6089 - val_loss: 232394.2969 - val_mean_squared_error: 176.2070 - val_mean_absolute_error: 8.7007 - val_ssd_loss: 90217.9531 - val_mad_loss: 2843.5271
+
+Epoch 00001: val_loss improved from inf to 232394.29688, saving model to Multibranch_LANLD_weights.best.hdf5
+Epoch 2/1000
+35/35 [==============================] - 0s 12ms/step - loss: 348664.5000 - mean_squared_error: 252.7552 - mean_absolute_error: 10.2778 - ssd_loss: 129410.6719 - mad_loss: 4385.0757 - val_loss: 229859.6094 - val_mean_squared_error: 173.5589 - val_mean_absolute_error: 8.6274 - val_ssd_loss: 88862.1250 - val_mad_loss: 2819.9495
+
+Epoch 00002: val_loss improved from 232394.29688 to 229859.60938, saving model to Multibranch_LANLD_weights.best.hdf5
+Epoch 3/1000
+35/35 [==============================] - 0s 12ms/step - loss: 346653.0625 - mean_squared_error: 249.8899 - mean_absolute_error: 10.2139 - ssd_loss: 127943.6172 - mad_loss: 4374.1885 - val_loss: 227291.7500 - val_mean_squared_error: 171.0848 - val_mean_absolute_error: 8.5587 - val_ssd_loss: 87595.4062 - val_mad_loss: 2793.9265
+
+Epoch 00003: val_loss improved from 229859.60938 to 227291.75000, saving model to Multibranch_LANLD_weights.best.hdf5
+Epoch 4/1000
+35/35 [==============================] - 0s 12ms/step - loss: 340898.4375 - mean_squared_error: 246.3723 - mean_absolute_error: 10.1368 - ssd_loss: 126142.6250 - mad_loss: 4295.1157 - val_loss: 224716.3594 - val_mean_squared_error: 168.6246 - val_mean_absolute_error: 8.4904 - val_ssd_loss: 86335.8281 - val_mad_loss: 2767.6106
+
+Epoch 00004: val_loss improved from 227291.75000 to 224716.35938, saving model to Multibranch_LANLD_weights.best.hdf5
+Epoch 5/1000
+35/35 [==============================] - 0s 12ms/step - loss: 341462.3125 - mean_squared_error: 244.4203 - mean_absolute_error: 10.0901 - ssd_loss: 125143.1406 - mad_loss: 4326.3838 - val_loss: 222034.2656 - val_mean_squared_error: 165.9416 - val_mean_absolute_error: 8.4172 - val_ssd_loss: 84962.1016 - val_mad_loss: 2741.4436
+
+Epoch 00005: val_loss improved from 224716.35938 to 222034.26562, saving model to Multibranch_LANLD_weights.best.hdf5
+Epoch 6/1000
+35/35 [==============================] - 0s 13ms/step - loss: 335167.6875 - mean_squared_error: 241.8123 - mean_absolute_error: 10.0233 - ssd_loss: 123807.9141 - mad_loss: 4227.1953 - val_loss: 218755.5781 - val_mean_squared_error: 162.6568 - val_mean_absolute_error: 8.3292 - val_ssd_loss: 83280.2656 - val_mad_loss: 2709.5063
+
+Epoch 00006: val_loss improved from 222034.26562 to 218755.57812, saving model to Multibranch_LANLD_weights.best.hdf5
+Epoch 7/1000
+35/35 [==============================] - 0s 13ms/step - loss: 329594.2188 - mean_squared_error: 238.2600 - mean_absolute_error: 9.9376 - ssd_loss: 121989.1016 - mad_loss: 4152.1025 - val_loss: 214942.0156 - val_mean_squared_error: 158.8673 - val_mean_absolute_error: 8.2283 - val_ssd_loss: 81340.0547 - val_mad_loss: 2672.0391
+
+Epoch 00007: val_loss improved from 218755.57812 to 214942.01562, saving model to Multibranch_LANLD_weights.best.hdf5
+Epoch 8/1000
+35/35 [==============================] - 0s 12ms/step - loss: 327071.5000 - mean_squared_error: 234.7758 - mean_absolute_error: 9.8623 - ssd_loss: 120205.2109 - mad_loss: 4137.3257 - val_loss: 210158.5781 - val_mean_squared_error: 154.1864 - val_mean_absolute_error: 8.1034 - val_ssd_loss: 78943.4141 - val_mad_loss: 2624.3035
+
+Epoch 00008: val_loss improved from 214942.01562 to 210158.57812, saving model to Multibranch_LANLD_weights.best.hdf5
+Epoch 9/1000
+35/35 [==============================] - 0s 12ms/step - loss: 322680.1562 - mean_squared_error: 230.4804 - mean_absolute_error: 9.7881 - ssd_loss: 118005.9531 - mad_loss: 4093.4834 - val_loss: 204738.5625 - val_mean_squared_error: 148.9010 - val_mean_absolute_error: 7.9595 - val_ssd_loss: 76237.3359 - val_mad_loss: 2570.0247
+
+Epoch 00009: val_loss improved from 210158.57812 to 204738.56250, saving model to Multibranch_LANLD_weights.best.hdf5
+Epoch 10/1000
+35/35 [==============================] - 0s 12ms/step - loss: 316859.2500 - mean_squared_error: 226.6783 - mean_absolute_error: 9.6812 - ssd_loss: 116059.3203 - mad_loss: 4015.9990 - val_loss: 198490.3594 - val_mean_squared_error: 142.8620 - val_mean_absolute_error: 7.7935 - val_ssd_loss: 73145.3438 - val_mad_loss: 2506.9001
+
+Epoch 00010: val_loss improved from 204738.56250 to 198490.35938, saving model to Multibranch_LANLD_weights.best.hdf5
+Epoch 11/1000
+35/35 [==============================] - 0s 11ms/step - loss: 312850.0312 - mean_squared_error: 223.6230 - mean_absolute_error: 9.6082 - ssd_loss: 114494.9531 - mad_loss: 3967.1008 - val_loss: 191612.3281 - val_mean_squared_error: 136.2669 - val_mean_absolute_error: 7.6098 - val_ssd_loss: 69768.6484 - val_mad_loss: 2436.8738
+
+Epoch 00011: val_loss improved from 198490.35938 to 191612.32812, saving model to Multibranch_LANLD_weights.best.hdf5
+Epoch 12/1000
+35/35 [==============================] - 0s 12ms/step - loss: 310331.1562 - mean_squared_error: 219.2811 - mean_absolute_error: 9.5149 - ssd_loss: 112271.8984 - mad_loss: 3961.1843 - val_loss: 184325.3594 - val_mean_squared_error: 129.3502 - val_mean_absolute_error: 7.4136 - val_ssd_loss: 66227.3203 - val_mad_loss: 2361.9609
+
+Epoch 00012: val_loss improved from 191612.32812 to 184325.35938, saving model to Multibranch_LANLD_weights.best.hdf5
+Epoch 13/1000
+35/35 [==============================] - 0s 12ms/step - loss: 309005.3438 - mean_squared_error: 215.5563 - mean_absolute_error: 9.4340 - ssd_loss: 110364.8125 - mad_loss: 3972.8115 - val_loss: 176776.9219 - val_mean_squared_error: 122.2849 - val_mean_absolute_error: 7.2092 - val_ssd_loss: 62609.8789 - val_mad_loss: 2283.3408
+
+Epoch 00013: val_loss improved from 184325.35938 to 176776.92188, saving model to Multibranch_LANLD_weights.best.hdf5
+Epoch 14/1000
+35/35 [==============================] - 0s 12ms/step - loss: 298678.6562 - mean_squared_error: 211.2219 - mean_absolute_error: 9.3360 - ssd_loss: 108145.6250 - mad_loss: 3810.6611 - val_loss: 169055.1562 - val_mean_squared_error: 115.1032 - val_mean_absolute_error: 6.9948 - val_ssd_loss: 58932.8672 - val_mad_loss: 2202.4458
+
+Epoch 00014: val_loss improved from 176776.92188 to 169055.15625, saving model to Multibranch_LANLD_weights.best.hdf5
+Epoch 15/1000
+35/35 [==============================] - 0s 12ms/step - loss: 295427.1562 - mean_squared_error: 207.4227 - mean_absolute_error: 9.2455 - ssd_loss: 106200.4219 - mad_loss: 3784.5352 - val_loss: 161393.0938 - val_mean_squared_error: 108.0858 - val_mean_absolute_error: 6.7792 - val_ssd_loss: 55339.9141 - val_mad_loss: 2121.0637
+
+Epoch 00015: val_loss improved from 169055.15625 to 161393.09375, saving model to Multibranch_LANLD_weights.best.hdf5
+Epoch 16/1000
+35/35 [==============================] - 0s 12ms/step - loss: 289168.5938 - mean_squared_error: 203.4808 - mean_absolute_error: 9.1629 - ssd_loss: 104182.1641 - mad_loss: 3699.7280 - val_loss: 153959.1719 - val_mean_squared_error: 101.3795 - val_mean_absolute_error: 6.5667 - val_ssd_loss: 51906.3242 - val_mad_loss: 2041.0570
+
+Epoch 00016: val_loss improved from 161393.09375 to 153959.17188, saving model to Multibranch_LANLD_weights.best.hdf5
+Epoch 17/1000
+35/35 [==============================] - 0s 12ms/step - loss: 286785.2812 - mean_squared_error: 200.4340 - mean_absolute_error: 9.0828 - ssd_loss: 102622.2031 - mad_loss: 3683.2617 - val_loss: 146699.2656 - val_mean_squared_error: 94.9842 - val_mean_absolute_error: 6.3577 - val_ssd_loss: 48631.8906 - val_mad_loss: 1961.3475
+
+Epoch 00017: val_loss improved from 153959.17188 to 146699.26562, saving model to Multibranch_LANLD_weights.best.hdf5
+Epoch 18/1000
+35/35 [==============================] - 0s 12ms/step - loss: 284322.1250 - mean_squared_error: 197.2557 - mean_absolute_error: 8.9970 - ssd_loss: 100994.8984 - mad_loss: 3666.5444 - val_loss: 139593.8438 - val_mean_squared_error: 88.9451 - val_mean_absolute_error: 6.1548 - val_ssd_loss: 45539.8672 - val_mad_loss: 1881.0798
+
+Epoch 00018: val_loss improved from 146699.26562 to 139593.84375, saving model to Multibranch_LANLD_weights.best.hdf5
+Epoch 19/1000
+35/35 [==============================] - 0s 12ms/step - loss: 276504.0938 - mean_squared_error: 193.5692 - mean_absolute_error: 8.9233 - ssd_loss: 99107.4141 - mad_loss: 3547.9333 - val_loss: 132801.3594 - val_mean_squared_error: 83.4409 - val_mean_absolute_error: 5.9653 - val_ssd_loss: 42721.7148 - val_mad_loss: 1801.5931
+
+Epoch 00019: val_loss improved from 139593.84375 to 132801.35938, saving model to Multibranch_LANLD_weights.best.hdf5
+Epoch 20/1000
+35/35 [==============================] - 0s 12ms/step - loss: 274439.1250 - mean_squared_error: 189.2332 - mean_absolute_error: 8.8441 - ssd_loss: 96887.3750 - mad_loss: 3551.0352 - val_loss: 126437.9531 - val_mean_squared_error: 78.4878 - val_mean_absolute_error: 5.7900 - val_ssd_loss: 40185.7500 - val_mad_loss: 1725.0441
+
+Epoch 00020: val_loss improved from 132801.35938 to 126437.95312, saving model to Multibranch_LANLD_weights.best.hdf5
+Epoch 21/1000
+35/35 [==============================] - 0s 12ms/step - loss: 272171.1562 - mean_squared_error: 186.6537 - mean_absolute_error: 8.7617 - ssd_loss: 95566.6797 - mad_loss: 3532.0891 - val_loss: 120406.9922 - val_mean_squared_error: 74.0034 - val_mean_absolute_error: 5.6266 - val_ssd_loss: 37889.7539 - val_mad_loss: 1650.3448
+
+Epoch 00021: val_loss improved from 126437.95312 to 120406.99219, saving model to Multibranch_LANLD_weights.best.hdf5
+Epoch 22/1000
+35/35 [==============================] - 0s 12ms/step - loss: 270532.3125 - mean_squared_error: 184.5284 - mean_absolute_error: 8.7208 - ssd_loss: 94478.5469 - mad_loss: 3521.0759 - val_loss: 114886.6406 - val_mean_squared_error: 70.0700 - val_mean_absolute_error: 5.4804 - val_ssd_loss: 35875.8281 - val_mad_loss: 1580.2162
+
+Epoch 00022: val_loss improved from 120406.99219 to 114886.64062, saving model to Multibranch_LANLD_weights.best.hdf5
+Epoch 23/1000
+35/35 [==============================] - 0s 12ms/step - loss: 264921.0312 - mean_squared_error: 180.7774 - mean_absolute_error: 8.6339 - ssd_loss: 92558.0312 - mad_loss: 3447.2598 - val_loss: 109813.4531 - val_mean_squared_error: 66.6390 - val_mean_absolute_error: 5.3530 - val_ssd_loss: 34119.1484 - val_mad_loss: 1513.8860
+
+Epoch 00023: val_loss improved from 114886.64062 to 109813.45312, saving model to Multibranch_LANLD_weights.best.hdf5
+Epoch 24/1000
+35/35 [==============================] - 0s 12ms/step - loss: 258767.0781 - mean_squared_error: 178.5204 - mean_absolute_error: 8.5907 - ssd_loss: 91402.4531 - mad_loss: 3347.2925 - val_loss: 105051.7344 - val_mean_squared_error: 63.4949 - val_mean_absolute_error: 5.2373 - val_ssd_loss: 32509.3672 - val_mad_loss: 1450.8474
+
+Epoch 00024: val_loss improved from 109813.45312 to 105051.73438, saving model to Multibranch_LANLD_weights.best.hdf5
+Epoch 25/1000
+35/35 [==============================] - 0s 12ms/step - loss: 254481.2812 - mean_squared_error: 175.8727 - mean_absolute_error: 8.5326 - ssd_loss: 90046.8359 - mad_loss: 3288.6890 - val_loss: 101373.9688 - val_mean_squared_error: 60.8673 - val_mean_absolute_error: 5.1446 - val_ssd_loss: 31164.0742 - val_mad_loss: 1404.1976
+
+Epoch 00025: val_loss improved from 105051.73438 to 101373.96875, saving model to Multibranch_LANLD_weights.best.hdf5
+Epoch 26/1000
+35/35 [==============================] - 0s 12ms/step - loss: 251271.0625 - mean_squared_error: 173.7160 - mean_absolute_error: 8.4917 - ssd_loss: 88942.5781 - mad_loss: 3246.5691 - val_loss: 98931.1797 - val_mean_squared_error: 58.5656 - val_mean_absolute_error: 5.0664 - val_ssd_loss: 29985.5918 - val_mad_loss: 1378.9117
+
+Epoch 00026: val_loss improved from 101373.96875 to 98931.17969, saving model to Multibranch_LANLD_weights.best.hdf5
+Epoch 27/1000
+35/35 [==============================] - 0s 12ms/step - loss: 250660.8906 - mean_squared_error: 171.0605 - mean_absolute_error: 8.4333 - ssd_loss: 87582.9609 - mad_loss: 3261.5586 - val_loss: 96615.2500 - val_mean_squared_error: 56.5007 - val_mean_absolute_error: 4.9992 - val_ssd_loss: 28928.3242 - val_mad_loss: 1353.7385
+
+Epoch 00027: val_loss improved from 98931.17969 to 96615.25000, saving model to Multibranch_LANLD_weights.best.hdf5
+Epoch 28/1000
+35/35 [==============================] - 0s 12ms/step - loss: 243389.3438 - mean_squared_error: 168.7084 - mean_absolute_error: 8.3882 - ssd_loss: 86378.7109 - mad_loss: 3140.2122 - val_loss: 94426.1484 - val_mean_squared_error: 54.7095 - val_mean_absolute_error: 4.9466 - val_ssd_loss: 28011.2578 - val_mad_loss: 1328.2980
+
+Epoch 00028: val_loss improved from 96615.25000 to 94426.14844, saving model to Multibranch_LANLD_weights.best.hdf5
+Epoch 29/1000
+35/35 [==============================] - 0s 12ms/step - loss: 243895.9375 - mean_squared_error: 167.3209 - mean_absolute_error: 8.3244 - ssd_loss: 85668.3203 - mad_loss: 3164.5522 - val_loss: 92269.5000 - val_mean_squared_error: 53.0972 - val_mean_absolute_error: 4.9039 - val_ssd_loss: 27185.7500 - val_mad_loss: 1301.6750
+
+Epoch 00029: val_loss improved from 94426.14844 to 92269.50000, saving model to Multibranch_LANLD_weights.best.hdf5
+Epoch 30/1000
+35/35 [==============================] - 0s 12ms/step - loss: 239897.3750 - mean_squared_error: 164.9942 - mean_absolute_error: 8.2978 - ssd_loss: 84477.0391 - mad_loss: 3108.4067 - val_loss: 90558.2812 - val_mean_squared_error: 51.8270 - val_mean_absolute_error: 4.8778 - val_ssd_loss: 26535.4453 - val_mad_loss: 1280.4567
+
+Epoch 00030: val_loss improved from 92269.50000 to 90558.28125, saving model to Multibranch_LANLD_weights.best.hdf5
+Epoch 31/1000
+35/35 [==============================] - 0s 12ms/step - loss: 236649.9531 - mean_squared_error: 162.4151 - mean_absolute_error: 8.1939 - ssd_loss: 83156.5469 - mad_loss: 3069.8682 - val_loss: 88682.0234 - val_mean_squared_error: 50.5811 - val_mean_absolute_error: 4.8549 - val_ssd_loss: 25897.5078 - val_mad_loss: 1255.6903
+
+Epoch 00031: val_loss improved from 90558.28125 to 88682.02344, saving model to Multibranch_LANLD_weights.best.hdf5
+Epoch 32/1000
+35/35 [==============================] - 0s 12ms/step - loss: 233567.2188 - mean_squared_error: 160.2766 - mean_absolute_error: 8.1536 - ssd_loss: 82061.5938 - mad_loss: 3030.1128 - val_loss: 86927.8594 - val_mean_squared_error: 49.5833 - val_mean_absolute_error: 4.8436 - val_ssd_loss: 25386.6465 - val_mad_loss: 1230.8242
+
+Epoch 00032: val_loss improved from 88682.02344 to 86927.85938, saving model to Multibranch_LANLD_weights.best.hdf5
+Epoch 33/1000
+35/35 [==============================] - 0s 12ms/step - loss: 231172.8594 - mean_squared_error: 159.1285 - mean_absolute_error: 8.1588 - ssd_loss: 81473.8203 - mad_loss: 2993.9807 - val_loss: 85563.6328 - val_mean_squared_error: 48.9197 - val_mean_absolute_error: 4.8470 - val_ssd_loss: 25046.8770 - val_mad_loss: 1210.3352
+
+Epoch 00033: val_loss improved from 86927.85938 to 85563.63281, saving model to Multibranch_LANLD_weights.best.hdf5
+Epoch 34/1000
+35/35 [==============================] - 0s 12ms/step - loss: 230310.3125 - mean_squared_error: 156.8749 - mean_absolute_error: 8.0943 - ssd_loss: 80319.9453 - mad_loss: 2999.8071 - val_loss: 84461.0859 - val_mean_squared_error: 48.3917 - val_mean_absolute_error: 4.8538 - val_ssd_loss: 24776.5449 - val_mad_loss: 1193.6908
+
+Epoch 00034: val_loss improved from 85563.63281 to 84461.08594, saving model to Multibranch_LANLD_weights.best.hdf5
+Epoch 35/1000
+35/35 [==============================] - 0s 12ms/step - loss: 222018.3594 - mean_squared_error: 155.0943 - mean_absolute_error: 8.0700 - ssd_loss: 79408.2656 - mad_loss: 2852.2019 - val_loss: 83462.7500 - val_mean_squared_error: 48.0476 - val_mean_absolute_error: 4.8689 - val_ssd_loss: 24600.3984 - val_mad_loss: 1177.2469
+
+Epoch 00035: val_loss improved from 84461.08594 to 83462.75000, saving model to Multibranch_LANLD_weights.best.hdf5
+Epoch 36/1000
+35/35 [==============================] - 0s 13ms/step - loss: 217633.1719 - mean_squared_error: 152.6258 - mean_absolute_error: 8.0082 - ssd_loss: 78144.4062 - mad_loss: 2789.7754 - val_loss: 82626.3984 - val_mean_squared_error: 47.8798 - val_mean_absolute_error: 4.8904 - val_ssd_loss: 24514.4375 - val_mad_loss: 1162.2391
+
+Epoch 00036: val_loss improved from 83462.75000 to 82626.39844, saving model to Multibranch_LANLD_weights.best.hdf5
+Epoch 37/1000
+35/35 [==============================] - 0s 12ms/step - loss: 209874.5469 - mean_squared_error: 151.2418 - mean_absolute_error: 8.0106 - ssd_loss: 77435.8125 - mad_loss: 2648.7744 - val_loss: 81914.0469 - val_mean_squared_error: 47.9193 - val_mean_absolute_error: 4.9206 - val_ssd_loss: 24534.6953 - val_mad_loss: 1147.5873
+
+Epoch 00037: val_loss improved from 82626.39844 to 81914.04688, saving model to Multibranch_LANLD_weights.best.hdf5
+Epoch 38/1000
+35/35 [==============================] - 0s 13ms/step - loss: 218346.0469 - mean_squared_error: 150.6507 - mean_absolute_error: 7.9112 - ssd_loss: 77133.1484 - mad_loss: 2824.2578 - val_loss: 81302.2031 - val_mean_squared_error: 48.0037 - val_mean_absolute_error: 4.9516 - val_ssd_loss: 24577.8730 - val_mad_loss: 1134.4866
+
+Epoch 00038: val_loss improved from 81914.04688 to 81302.20312, saving model to Multibranch_LANLD_weights.best.hdf5
+Epoch 39/1000
+35/35 [==============================] - 0s 12ms/step - loss: 213401.4531 - mean_squared_error: 148.6631 - mean_absolute_error: 7.8966 - ssd_loss: 76115.5156 - mad_loss: 2745.7183 - val_loss: 80618.5156 - val_mean_squared_error: 48.0695 - val_mean_absolute_error: 4.9809 - val_ssd_loss: 24611.5879 - val_mad_loss: 1120.1385
+
+Epoch 00039: val_loss improved from 81302.20312 to 80618.51562, saving model to Multibranch_LANLD_weights.best.hdf5
+Epoch 40/1000
+35/35 [==============================] - 0s 13ms/step - loss: 200622.4062 - mean_squared_error: 146.7098 - mean_absolute_error: 7.9131 - ssd_loss: 75115.4453 - mad_loss: 2510.1394 - val_loss: 79546.0312 - val_mean_squared_error: 48.0278 - val_mean_absolute_error: 5.0047 - val_ssd_loss: 24590.2266 - val_mad_loss: 1099.1161
+
+Epoch 00040: val_loss improved from 80618.51562 to 79546.03125, saving model to Multibranch_LANLD_weights.best.hdf5
+Epoch 41/1000
+35/35 [==============================] - 0s 13ms/step - loss: 210130.9531 - mean_squared_error: 146.0499 - mean_absolute_error: 7.8497 - ssd_loss: 74777.5469 - mad_loss: 2707.0686 - val_loss: 78209.9297 - val_mean_squared_error: 47.8668 - val_mean_absolute_error: 5.0226 - val_ssd_loss: 24507.8125 - val_mad_loss: 1074.0424
+
+Epoch 00041: val_loss improved from 79546.03125 to 78209.92969, saving model to Multibranch_LANLD_weights.best.hdf5
+Epoch 42/1000
+35/35 [==============================] - 0s 13ms/step - loss: 207157.3438 - mean_squared_error: 143.7359 - mean_absolute_error: 7.8080 - ssd_loss: 73592.7891 - mad_loss: 2671.2908 - val_loss: 76558.6172 - val_mean_squared_error: 47.5573 - val_mean_absolute_error: 5.0319 - val_ssd_loss: 24349.3125 - val_mad_loss: 1044.1860
+
+Epoch 00042: val_loss improved from 78209.92969 to 76558.61719, saving model to Multibranch_LANLD_weights.best.hdf5
+Epoch 43/1000
+35/35 [==============================] - 0s 12ms/step - loss: 192800.2812 - mean_squared_error: 141.8381 - mean_absolute_error: 7.7854 - ssd_loss: 72621.1094 - mad_loss: 2403.5835 - val_loss: 75250.8672 - val_mean_squared_error: 47.4035 - val_mean_absolute_error: 5.0461 - val_ssd_loss: 24270.6074 - val_mad_loss: 1019.6053
+
+Epoch 00043: val_loss improved from 76558.61719 to 75250.86719, saving model to Multibranch_LANLD_weights.best.hdf5
+Epoch 44/1000
+35/35 [==============================] - 0s 13ms/step - loss: 196342.4219 - mean_squared_error: 139.5599 - mean_absolute_error: 7.7421 - ssd_loss: 71454.6406 - mad_loss: 2497.7556 - val_loss: 74418.8281 - val_mean_squared_error: 47.4086 - val_mean_absolute_error: 5.0661 - val_ssd_loss: 24273.2285 - val_mad_loss: 1002.9119
+
+Epoch 00044: val_loss improved from 75250.86719 to 74418.82812, saving model to Multibranch_LANLD_weights.best.hdf5
+Epoch 45/1000
+35/35 [==============================] - 0s 13ms/step - loss: 192147.5781 - mean_squared_error: 140.4036 - mean_absolute_error: 7.7554 - ssd_loss: 71886.6406 - mad_loss: 2405.2190 - val_loss: 73489.8359 - val_mean_squared_error: 47.3176 - val_mean_absolute_error: 5.0785 - val_ssd_loss: 24226.6055 - val_mad_loss: 985.2646
+
+Epoch 00045: val_loss improved from 74418.82812 to 73489.83594, saving model to Multibranch_LANLD_weights.best.hdf5
+Epoch 46/1000
+35/35 [==============================] - 0s 12ms/step - loss: 195248.0312 - mean_squared_error: 137.7008 - mean_absolute_error: 7.6924 - ssd_loss: 70502.8281 - mad_loss: 2494.9041 - val_loss: 72779.0391 - val_mean_squared_error: 47.3018 - val_mean_absolute_error: 5.0933 - val_ssd_loss: 24218.5371 - val_mad_loss: 971.2100
+
+Epoch 00046: val_loss improved from 73489.83594 to 72779.03906, saving model to Multibranch_LANLD_weights.best.hdf5
+Epoch 47/1000
+35/35 [==============================] - 0s 13ms/step - loss: 190225.0156 - mean_squared_error: 135.1489 - mean_absolute_error: 7.6274 - ssd_loss: 69196.2578 - mad_loss: 2420.5750 - val_loss: 72038.5078 - val_mean_squared_error: 47.1283 - val_mean_absolute_error: 5.0981 - val_ssd_loss: 24129.6836 - val_mad_loss: 958.1766
+
+Epoch 00047: val_loss improved from 72779.03906 to 72038.50781, saving model to Multibranch_LANLD_weights.best.hdf5
+Epoch 48/1000
+35/35 [==============================] - 0s 12ms/step - loss: 180260.8594 - mean_squared_error: 132.9784 - mean_absolute_error: 7.6223 - ssd_loss: 68084.9453 - mad_loss: 2243.5183 - val_loss: 71290.2344 - val_mean_squared_error: 46.9562 - val_mean_absolute_error: 5.1025 - val_ssd_loss: 24041.5840 - val_mad_loss: 944.9729
+
+Epoch 00048: val_loss improved from 72038.50781 to 71290.23438, saving model to Multibranch_LANLD_weights.best.hdf5
+Epoch 49/1000
+35/35 [==============================] - 0s 13ms/step - loss: 177766.4219 - mean_squared_error: 132.0882 - mean_absolute_error: 7.6067 - ssd_loss: 67629.1719 - mad_loss: 2202.7451 - val_loss: 70496.5156 - val_mean_squared_error: 46.7193 - val_mean_absolute_error: 5.1020 - val_ssd_loss: 23920.2773 - val_mad_loss: 931.5247
+
+Epoch 00049: val_loss improved from 71290.23438 to 70496.51562, saving model to Multibranch_LANLD_weights.best.hdf5
+Epoch 50/1000
+35/35 [==============================] - 0s 13ms/step - loss: 175555.4844 - mean_squared_error: 130.2171 - mean_absolute_error: 7.5519 - ssd_loss: 66671.1484 - mad_loss: 2177.6865 - val_loss: 70019.5703 - val_mean_squared_error: 46.5994 - val_mean_absolute_error: 5.1056 - val_ssd_loss: 23858.8926 - val_mad_loss: 923.2136
+
+Epoch 00050: val_loss improved from 70496.51562 to 70019.57031, saving model to Multibranch_LANLD_weights.best.hdf5
+Epoch 51/1000
+35/35 [==============================] - 0s 12ms/step - loss: 175172.2812 - mean_squared_error: 129.1926 - mean_absolute_error: 7.5313 - ssd_loss: 66146.6094 - mad_loss: 2180.5139 - val_loss: 69349.1719 - val_mean_squared_error: 46.2975 - val_mean_absolute_error: 5.0993 - val_ssd_loss: 23704.3379 - val_mad_loss: 912.8967
+
+Epoch 00051: val_loss improved from 70019.57031 to 69349.17188, saving model to Multibranch_LANLD_weights.best.hdf5
+Epoch 52/1000
+35/35 [==============================] - 0s 13ms/step - loss: 172805.9844 - mean_squared_error: 127.9119 - mean_absolute_error: 7.5003 - ssd_loss: 65490.9141 - mad_loss: 2146.3010 - val_loss: 68903.1875 - val_mean_squared_error: 46.0854 - val_mean_absolute_error: 5.0957 - val_ssd_loss: 23595.7305 - val_mad_loss: 906.1491
+
+Epoch 00052: val_loss improved from 69349.17188 to 68903.18750, saving model to Multibranch_LANLD_weights.best.hdf5
+Epoch 53/1000
+35/35 [==============================] - 0s 13ms/step - loss: 168850.0000 - mean_squared_error: 125.6571 - mean_absolute_error: 7.4465 - ssd_loss: 64336.4414 - mad_loss: 2090.2712 - val_loss: 68446.4766 - val_mean_squared_error: 45.8497 - val_mean_absolute_error: 5.0905 - val_ssd_loss: 23475.0508 - val_mad_loss: 899.4284
+
+Epoch 00053: val_loss improved from 68903.18750 to 68446.47656, saving model to Multibranch_LANLD_weights.best.hdf5
+Epoch 54/1000
+35/35 [==============================] - 0s 12ms/step - loss: 174530.1406 - mean_squared_error: 124.6320 - mean_absolute_error: 7.3906 - ssd_loss: 63811.5625 - mad_loss: 2214.3716 - val_loss: 67829.8828 - val_mean_squared_error: 45.5187 - val_mean_absolute_error: 5.0795 - val_ssd_loss: 23305.5664 - val_mad_loss: 890.4863
+
+Epoch 00054: val_loss improved from 68446.47656 to 67829.88281, saving model to Multibranch_LANLD_weights.best.hdf5
+Epoch 55/1000
+35/35 [==============================] - 0s 13ms/step - loss: 166811.9219 - mean_squared_error: 123.0429 - mean_absolute_error: 7.3562 - ssd_loss: 62997.9570 - mad_loss: 2076.2793 - val_loss: 66956.7578 - val_mean_squared_error: 44.9540 - val_mean_absolute_error: 5.0552 - val_ssd_loss: 23016.4629 - val_mad_loss: 878.8058
+
+Epoch 00055: val_loss improved from 67829.88281 to 66956.75781, saving model to Multibranch_LANLD_weights.best.hdf5
+Epoch 56/1000
+35/35 [==============================] - 0s 12ms/step - loss: 167973.0156 - mean_squared_error: 121.9308 - mean_absolute_error: 7.3245 - ssd_loss: 62428.5703 - mad_loss: 2110.8887 - val_loss: 65772.4141 - val_mean_squared_error: 44.2548 - val_mean_absolute_error: 5.0242 - val_ssd_loss: 22658.4609 - val_mad_loss: 862.2792
+
+Epoch 00056: val_loss improved from 66956.75781 to 65772.41406, saving model to Multibranch_LANLD_weights.best.hdf5
+Epoch 57/1000
+35/35 [==============================] - 0s 13ms/step - loss: 163507.1094 - mean_squared_error: 119.9280 - mean_absolute_error: 7.2907 - ssd_loss: 61403.1211 - mad_loss: 2042.0797 - val_loss: 64561.1602 - val_mean_squared_error: 43.6111 - val_mean_absolute_error: 4.9957 - val_ssd_loss: 22328.8809 - val_mad_loss: 844.6455
+
+Epoch 00057: val_loss improved from 65772.41406 to 64561.16016, saving model to Multibranch_LANLD_weights.best.hdf5
+Epoch 58/1000
+35/35 [==============================] - 0s 13ms/step - loss: 156809.6875 - mean_squared_error: 116.8847 - mean_absolute_error: 7.2363 - ssd_loss: 59844.9492 - mad_loss: 1939.2949 - val_loss: 63714.2539 - val_mean_squared_error: 43.1600 - val_mean_absolute_error: 4.9752 - val_ssd_loss: 22097.9238 - val_mad_loss: 832.3265
+
+Epoch 00058: val_loss improved from 64561.16016 to 63714.25391, saving model to Multibranch_LANLD_weights.best.hdf5
+Epoch 59/1000
+35/35 [==============================] - 0s 12ms/step - loss: 155535.2500 - mean_squared_error: 114.9517 - mean_absolute_error: 7.1729 - ssd_loss: 58855.2578 - mad_loss: 1933.5997 - val_loss: 63211.3086 - val_mean_squared_error: 42.7304 - val_mean_absolute_error: 4.9544 - val_ssd_loss: 21877.9590 - val_mad_loss: 826.6671
+
+Epoch 00059: val_loss improved from 63714.25391 to 63211.30859, saving model to Multibranch_LANLD_weights.best.hdf5
+Epoch 60/1000
+35/35 [==============================] - 0s 13ms/step - loss: 153333.3125 - mean_squared_error: 114.4613 - mean_absolute_error: 7.1832 - ssd_loss: 58604.1875 - mad_loss: 1894.5826 - val_loss: 62953.3984 - val_mean_squared_error: 42.4279 - val_mean_absolute_error: 4.9401 - val_ssd_loss: 21723.0840 - val_mad_loss: 824.6063
+
+Epoch 00060: val_loss improved from 63211.30859 to 62953.39844, saving model to Multibranch_LANLD_weights.best.hdf5
+Epoch 61/1000
+35/35 [==============================] - 0s 12ms/step - loss: 145269.7969 - mean_squared_error: 113.3275 - mean_absolute_error: 7.1816 - ssd_loss: 58023.6992 - mad_loss: 1744.9221 - val_loss: 62951.2383 - val_mean_squared_error: 42.2591 - val_mean_absolute_error: 4.9307 - val_ssd_loss: 21636.6230 - val_mad_loss: 826.2922
+
+Epoch 00061: val_loss improved from 62953.39844 to 62951.23828, saving model to Multibranch_LANLD_weights.best.hdf5
+Epoch 62/1000
+35/35 [==============================] - 0s 13ms/step - loss: 146122.9219 - mean_squared_error: 111.2797 - mean_absolute_error: 7.1387 - ssd_loss: 56975.2305 - mad_loss: 1782.9534 - val_loss: 63054.6758 - val_mean_squared_error: 42.1495 - val_mean_absolute_error: 4.9222 - val_ssd_loss: 21580.5254 - val_mad_loss: 829.4830
+
+Epoch 00062: val_loss did not improve from 62951.23828
+Epoch 63/1000
+35/35 [==============================] - 0s 12ms/step - loss: 150262.1875 - mean_squared_error: 111.2399 - mean_absolute_error: 7.0984 - ssd_loss: 56954.8516 - mad_loss: 1866.1470 - val_loss: 63045.2461 - val_mean_squared_error: 42.0387 - val_mean_absolute_error: 4.9145 - val_ssd_loss: 21523.8164 - val_mad_loss: 830.4286
+
+Epoch 00063: ReduceLROnPlateau reducing learning rate to 0.0005000000237487257.
+
+Epoch 00063: val_loss did not improve from 62951.23828
+Epoch 64/1000
+35/35 [==============================] - 0s 13ms/step - loss: 145481.2969 - mean_squared_error: 108.9216 - mean_absolute_error: 7.0281 - ssd_loss: 55767.8555 - mad_loss: 1794.2687 - val_loss: 63290.2109 - val_mean_squared_error: 42.1823 - val_mean_absolute_error: 4.9181 - val_ssd_loss: 21597.3418 - val_mad_loss: 833.8575
+
+Epoch 00064: val_loss did not improve from 62951.23828
+Epoch 65/1000
+35/35 [==============================] - 0s 13ms/step - loss: 144573.6094 - mean_squared_error: 108.5917 - mean_absolute_error: 7.0245 - ssd_loss: 55598.9375 - mad_loss: 1779.4934 - val_loss: 63440.3086 - val_mean_squared_error: 42.2367 - val_mean_absolute_error: 4.9165 - val_ssd_loss: 21625.2012 - val_mad_loss: 836.3021
+
+Epoch 00065: ReduceLROnPlateau reducing learning rate to 0.0002500000118743628.
+
+Epoch 00065: val_loss did not improve from 62951.23828
+Epoch 66/1000
+35/35 [==============================] - 0s 12ms/step - loss: 141828.9375 - mean_squared_error: 105.9430 - mean_absolute_error: 6.9605 - ssd_loss: 54242.8359 - mad_loss: 1751.7223 - val_loss: 63687.3984 - val_mean_squared_error: 42.3976 - val_mean_absolute_error: 4.9209 - val_ssd_loss: 21707.5703 - val_mad_loss: 839.5965
+
+Epoch 00066: val_loss did not improve from 62951.23828
+Epoch 67/1000
+35/35 [==============================] - 0s 13ms/step - loss: 137196.0781 - mean_squared_error: 106.9607 - mean_absolute_error: 6.9921 - ssd_loss: 54763.8789 - mad_loss: 1648.6438 - val_loss: 63898.4023 - val_mean_squared_error: 42.5114 - val_mean_absolute_error: 4.9220 - val_ssd_loss: 21765.8340 - val_mad_loss: 842.6515
+
+Epoch 00067: ReduceLROnPlateau reducing learning rate to 0.0001250000059371814.
+
+Epoch 00067: val_loss did not improve from 62951.23828
+Epoch 68/1000
+35/35 [==============================] - 0s 12ms/step - loss: 145557.8281 - mean_squared_error: 107.8325 - mean_absolute_error: 6.9997 - ssd_loss: 55210.2461 - mad_loss: 1806.9519 - val_loss: 64219.1641 - val_mean_squared_error: 42.7256 - val_mean_absolute_error: 4.9268 - val_ssd_loss: 21875.5234 - val_mad_loss: 846.8728
+
+Epoch 00068: val_loss did not improve from 62951.23828
+Epoch 69/1000
+35/35 [==============================] - 0s 13ms/step - loss: 138935.6875 - mean_squared_error: 106.1347 - mean_absolute_error: 6.9719 - ssd_loss: 54340.9492 - mad_loss: 1691.8951 - val_loss: 64544.6680 - val_mean_squared_error: 42.9602 - val_mean_absolute_error: 4.9333 - val_ssd_loss: 21995.6348 - val_mad_loss: 850.9806
+
+Epoch 00069: ReduceLROnPlateau reducing learning rate to 6.25000029685907e-05.
+
+Epoch 00069: val_loss did not improve from 62951.23828
+Epoch 70/1000
+35/35 [==============================] - 0s 13ms/step - loss: 135986.9844 - mean_squared_error: 106.3616 - mean_absolute_error: 7.0070 - ssd_loss: 54457.1289 - mad_loss: 1630.5970 - val_loss: 64949.2344 - val_mean_squared_error: 43.2843 - val_mean_absolute_error: 4.9437 - val_ssd_loss: 22161.5703 - val_mad_loss: 855.7531
+
+Epoch 00070: val_loss did not improve from 62951.23828
+Epoch 71/1000
+35/35 [==============================] - 0s 13ms/step - loss: 137544.1250 - mean_squared_error: 106.0345 - mean_absolute_error: 6.9752 - ssd_loss: 54289.6406 - mad_loss: 1665.0895 - val_loss: 65339.5234 - val_mean_squared_error: 43.6183 - val_mean_absolute_error: 4.9548 - val_ssd_loss: 22332.5938 - val_mad_loss: 860.1386
+
+Epoch 00071: ReduceLROnPlateau reducing learning rate to 3.125000148429535e-05.
+
+Epoch 00071: val_loss did not improve from 62951.23828
+Epoch 00071: early stopping
+FINISHED
+Deep Learning pipeline: Testing the model
+
+ Multibranch_LANLD
+
+Model: "model_1"
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to
+==================================================================================================
+input_1 (InputLayer)            (None, 512, 1)       0
+__________________________________________________________________________________________________
+conv1d_1 (Conv1D)               (None, 512, 8)       32          input_1[0][0]
+__________________________________________________________________________________________________
+conv1d_2 (Conv1D)               (None, 512, 8)       48          input_1[0][0]
+__________________________________________________________________________________________________
+conv1d_3 (Conv1D)               (None, 512, 8)       80          input_1[0][0]
+__________________________________________________________________________________________________
+conv1d_4 (Conv1D)               (None, 512, 8)       128         input_1[0][0]
+__________________________________________________________________________________________________
+conv1d_5 (Conv1D)               (None, 512, 8)       32          input_1[0][0]
+__________________________________________________________________________________________________
+conv1d_6 (Conv1D)               (None, 512, 8)       48          input_1[0][0]
+__________________________________________________________________________________________________
+conv1d_7 (Conv1D)               (None, 512, 8)       80          input_1[0][0]
+__________________________________________________________________________________________________
+conv1d_8 (Conv1D)               (None, 512, 8)       128         input_1[0][0]
+__________________________________________________________________________________________________
+concatenate_1 (Concatenate)     (None, 512, 64)      0           conv1d_1[0][0]
+                                                                 conv1d_2[0][0]
+                                                                 conv1d_3[0][0]
+                                                                 conv1d_4[0][0]
+                                                                 conv1d_5[0][0]
+                                                                 conv1d_6[0][0]
+                                                                 conv1d_7[0][0]
+                                                                 conv1d_8[0][0]
+__________________________________________________________________________________________________
+dropout_1 (Dropout)             (None, 512, 64)      0           concatenate_1[0][0]
+__________________________________________________________________________________________________
+batch_normalization_1 (BatchNor (None, 512, 64)      256         dropout_1[0][0]
+__________________________________________________________________________________________________
+conv1d_9 (Conv1D)               (None, 512, 10)      3210        batch_normalization_1[0][0]
+__________________________________________________________________________________________________
+conv1d_10 (Conv1D)              (None, 512, 10)      5770        batch_normalization_1[0][0]
+__________________________________________________________________________________________________
+conv1d_11 (Conv1D)              (None, 512, 10)      9610        batch_normalization_1[0][0]
+__________________________________________________________________________________________________
+conv1d_12 (Conv1D)              (None, 512, 10)      3210        batch_normalization_1[0][0]
+__________________________________________________________________________________________________
+conv1d_13 (Conv1D)              (None, 512, 10)      5770        batch_normalization_1[0][0]
+__________________________________________________________________________________________________
+conv1d_14 (Conv1D)              (None, 512, 10)      9610        batch_normalization_1[0][0]
+__________________________________________________________________________________________________
+concatenate_2 (Concatenate)     (None, 512, 60)      0           conv1d_9[0][0]
+                                                                 conv1d_10[0][0]
+                                                                 conv1d_11[0][0]
+                                                                 conv1d_12[0][0]
+                                                                 conv1d_13[0][0]
+                                                                 conv1d_14[0][0]
+__________________________________________________________________________________________________
+dropout_2 (Dropout)             (None, 512, 60)      0           concatenate_2[0][0]
+__________________________________________________________________________________________________
+batch_normalization_2 (BatchNor (None, 512, 60)      240         dropout_2[0][0]
+__________________________________________________________________________________________________
+conv1d_15 (Conv1D)              (None, 512, 4)       724         batch_normalization_2[0][0]
+__________________________________________________________________________________________________
+conv1d_16 (Conv1D)              (None, 512, 4)       1204        batch_normalization_2[0][0]
+__________________________________________________________________________________________________
+conv1d_17 (Conv1D)              (None, 512, 4)       2164        batch_normalization_2[0][0]
+__________________________________________________________________________________________________
+conv1d_18 (Conv1D)              (None, 512, 4)       3604        batch_normalization_2[0][0]
+__________________________________________________________________________________________________
+conv1d_19 (Conv1D)              (None, 512, 4)       724         batch_normalization_2[0][0]
+__________________________________________________________________________________________________
+conv1d_20 (Conv1D)              (None, 512, 4)       1204        batch_normalization_2[0][0]
+__________________________________________________________________________________________________
+conv1d_21 (Conv1D)              (None, 512, 4)       2164        batch_normalization_2[0][0]
+__________________________________________________________________________________________________
+conv1d_22 (Conv1D)              (None, 512, 4)       3604        batch_normalization_2[0][0]
+__________________________________________________________________________________________________
+concatenate_3 (Concatenate)     (None, 512, 32)      0           conv1d_15[0][0]
+                                                                 conv1d_16[0][0]
+                                                                 conv1d_17[0][0]
+                                                                 conv1d_18[0][0]
+                                                                 conv1d_19[0][0]
+                                                                 conv1d_20[0][0]
+                                                                 conv1d_21[0][0]
+                                                                 conv1d_22[0][0]
+__________________________________________________________________________________________________
+dropout_3 (Dropout)             (None, 512, 32)      0           concatenate_3[0][0]
+__________________________________________________________________________________________________
+batch_normalization_3 (BatchNor (None, 512, 32)      128         dropout_3[0][0]
+__________________________________________________________________________________________________
+conv1d_23 (Conv1D)              (None, 512, 5)       805         batch_normalization_3[0][0]
+__________________________________________________________________________________________________
+conv1d_24 (Conv1D)              (None, 512, 5)       1445        batch_normalization_3[0][0]
+__________________________________________________________________________________________________
+conv1d_25 (Conv1D)              (None, 512, 5)       2405        batch_normalization_3[0][0]
+__________________________________________________________________________________________________
+conv1d_26 (Conv1D)              (None, 512, 5)       805         batch_normalization_3[0][0]
+__________________________________________________________________________________________________
+conv1d_27 (Conv1D)              (None, 512, 5)       1445        batch_normalization_3[0][0]
+__________________________________________________________________________________________________
+conv1d_28 (Conv1D)              (None, 512, 5)       2405        batch_normalization_3[0][0]
+__________________________________________________________________________________________________
+concatenate_4 (Concatenate)     (None, 512, 30)      0           conv1d_23[0][0]
+                                                                 conv1d_24[0][0]
+                                                                 conv1d_25[0][0]
+                                                                 conv1d_26[0][0]
+                                                                 conv1d_27[0][0]
+                                                                 conv1d_28[0][0]
+__________________________________________________________________________________________________
+dropout_4 (Dropout)             (None, 512, 30)      0           concatenate_4[0][0]
+__________________________________________________________________________________________________
+batch_normalization_4 (BatchNor (None, 512, 30)      120         dropout_4[0][0]
+__________________________________________________________________________________________________
+conv1d_29 (Conv1D)              (None, 512, 2)       182         batch_normalization_4[0][0]
+__________________________________________________________________________________________________
+conv1d_30 (Conv1D)              (None, 512, 2)       302         batch_normalization_4[0][0]
+__________________________________________________________________________________________________
+conv1d_31 (Conv1D)              (None, 512, 2)       542         batch_normalization_4[0][0]
+__________________________________________________________________________________________________
+conv1d_32 (Conv1D)              (None, 512, 2)       902         batch_normalization_4[0][0]
+__________________________________________________________________________________________________
+conv1d_33 (Conv1D)              (None, 512, 2)       182         batch_normalization_4[0][0]
+__________________________________________________________________________________________________
+conv1d_34 (Conv1D)              (None, 512, 2)       302         batch_normalization_4[0][0]
+__________________________________________________________________________________________________
+conv1d_35 (Conv1D)              (None, 512, 2)       542         batch_normalization_4[0][0]
+__________________________________________________________________________________________________
+conv1d_36 (Conv1D)              (None, 512, 2)       902         batch_normalization_4[0][0]
+__________________________________________________________________________________________________
+concatenate_5 (Concatenate)     (None, 512, 16)      0           conv1d_29[0][0]
+                                                                 conv1d_30[0][0]
+                                                                 conv1d_31[0][0]
+                                                                 conv1d_32[0][0]
+                                                                 conv1d_33[0][0]
+                                                                 conv1d_34[0][0]
+                                                                 conv1d_35[0][0]
+                                                                 conv1d_36[0][0]
+__________________________________________________________________________________________________
+dropout_5 (Dropout)             (None, 512, 16)      0           concatenate_5[0][0]
+__________________________________________________________________________________________________
+batch_normalization_5 (BatchNor (None, 512, 16)      64          dropout_5[0][0]
+__________________________________________________________________________________________________
+conv1d_37 (Conv1D)              (None, 512, 2)       162         batch_normalization_5[0][0]
+__________________________________________________________________________________________________
+conv1d_38 (Conv1D)              (None, 512, 2)       290         batch_normalization_5[0][0]
+__________________________________________________________________________________________________
+conv1d_39 (Conv1D)              (None, 512, 2)       482         batch_normalization_5[0][0]
+__________________________________________________________________________________________________
+conv1d_40 (Conv1D)              (None, 512, 2)       162         batch_normalization_5[0][0]
+__________________________________________________________________________________________________
+conv1d_41 (Conv1D)              (None, 512, 2)       290         batch_normalization_5[0][0]
+__________________________________________________________________________________________________
+conv1d_42 (Conv1D)              (None, 512, 2)       482         batch_normalization_5[0][0]
+__________________________________________________________________________________________________
+concatenate_6 (Concatenate)     (None, 512, 12)      0           conv1d_37[0][0]
+                                                                 conv1d_38[0][0]
+                                                                 conv1d_39[0][0]
+                                                                 conv1d_40[0][0]
+                                                                 conv1d_41[0][0]
+                                                                 conv1d_42[0][0]
+__________________________________________________________________________________________________
+dropout_6 (Dropout)             (None, 512, 12)      0           concatenate_6[0][0]
+__________________________________________________________________________________________________
+batch_normalization_6 (BatchNor (None, 512, 12)      48          dropout_6[0][0]
+__________________________________________________________________________________________________
+conv1d_43 (Conv1D)              (None, 512, 1)       109         batch_normalization_6[0][0]
+==================================================================================================
+Total params: 69,147
+Trainable params: 68,719
+Non-trainable params: 428
+__________________________________________________________________________________________________
+10/10 [==============================] - 1s 58ms/step
+Results from experiment Multibranch LANLD_nv1 saved
+(IIR) Filtering signal 1 of 10
+(IIR) Filtering signal 2 of 10
+(IIR) Filtering signal 3 of 10
+(IIR) Filtering signal 4 of 10
+(IIR) Filtering signal 5 of 10
+(IIR) Filtering signal 6 of 10
+(IIR) Filtering signal 7 of 10
+(IIR) Filtering signal 8 of 10
+(IIR) Filtering signal 9 of 10
+(IIR) Filtering signal 10 of 10
+Results from experiment IIR filter nv 1 saved
+Timing nv 1 saved
+VISUALISING
+Calculating metrics ...
++-------------------+-----------------------+-----------------+-----------------+---------------+
+|    Method/Model   |          SSD          |       MAD       |       PRD       |    COS_SIM    |
++-------------------+-----------------------+-----------------+-----------------+---------------+
+| Multibranch LANLD | 31672.213 (25287.653) | 29.185 (15.799) | 77.062 (17.562) | 0.801 (0.098) |
++-------------------+-----------------------+-----------------+-----------------+---------------+
++-------------------+------------------------+--------------------+
+|    Method/Model   | training(GPU) h:m:s:ms | test(GPU) h:m:s:ms |
++-------------------+------------------------+--------------------+
+| Multibranch LANLD |     0:01:02.538721     |   0:00:04.447086   |
++-------------------+------------------------+--------------------+
+* For FIR and IIR Filters is CPU since scipy filters are CPU based implementations
+Traceback (most recent call last):
+  File "DeepFilter_PCG.py", line 449, in <module>
+    oua = SSD_all[idx_exp][idx]
+IndexError: index 20 is out of bounds for axis 0 with size 20

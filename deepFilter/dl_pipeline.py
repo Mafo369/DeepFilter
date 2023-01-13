@@ -17,6 +17,9 @@ from sklearn.model_selection import train_test_split
 
 import deepFilter.dl_models as models
 
+import os
+
+os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
 
 # Custom loss SSD
 def ssd_loss(y_true, y_pred):
@@ -86,7 +89,7 @@ def train_dl(Dataset, experiment, signal_size=512):
 
     model.summary()
 
-    epochs = int(1e5)  # 100000
+    epochs = 1000 #int(1e5)  # 100000
     # epochs = 100
     batch_size = 128
     lr = 1e-3
@@ -156,6 +159,8 @@ def train_dl(Dataset, experiment, signal_size=512):
                          reduce_lr,
                          checkpoint,
                          tboard])
+
+    print("FINISHED")
 
     K.clear_session()
 

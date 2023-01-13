@@ -199,6 +199,7 @@ def Data_Preparation(noise_version=1):
     X_test = np.expand_dims(X_test, axis=2)
     y_test = np.expand_dims(y_test, axis=2)
 
+    print(X_train.shape)
 
     Dataset = [X_train, y_train, X_test, y_test]
 
