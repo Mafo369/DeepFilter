@@ -12,7 +12,7 @@
 #===========================================================
 
 import _pickle as pickle
-from datetime import datetime
+from datetime import datetime, timedelta
 import time
 import numpy as np
 
@@ -42,7 +42,7 @@ if __name__ == "__main__":
         # Data_Preparation() function assumes that QT database and Noise Stress Test Database are uncompresed
         # inside a folder called data
 
-        Dataset = dp.Data_Preparation(noise_version=nv)
+        #Dataset = dp.Data_Preparation(noise_version=nv)
 
         # Save dataset
         #with open('data/dataset_nv' + str(nv) + '.pkl', 'wb') as output:  # Overwrites any existing file.
@@ -53,7 +53,7 @@ if __name__ == "__main__":
         #with open('data/dataset_nv' + str(nv) + '.pkl', 'rb') as input:
         #    Dataset = pickle.load(input)
 
-        Dataset = load_PCG() 
+        #Dataset = load_PCG() 
 
         train_time_list = []
         test_time_list = []
@@ -134,6 +134,26 @@ if __name__ == "__main__":
     for i in range(len(test_time_list_nv1)):
         test_time_list.append(test_time_list_nv1[i])
 
+    fir_time = timedelta(hours=0)
+    iir_time = timedelta(hours=0)
+    drnn_time = timedelta(seconds=55,microseconds=202438)
+    fcn_time = timedelta(seconds=11,microseconds=134003)
+    vanillaL_time = timedelta(seconds=4,microseconds=204968)
+    vanillaNL_time = timedelta(seconds=33,microseconds=44233)
+    lanl_time = timedelta(seconds=54,microseconds=437036)
+    lanld_time = timedelta(hours=1, minutes=4,seconds=26,microseconds=71243)
+
+    test_fir_time = timedelta(seconds=1,microseconds=319579)
+    test_iir_time = timedelta(seconds=0,microseconds=19579)
+    test_drnn_time = timedelta(seconds=0,microseconds=519579)
+    test_fcn_time = timedelta(seconds=2,microseconds=519579)
+    test_vanillaL_time = timedelta(seconds=0,microseconds=319579)
+    test_vanillaNL_time = timedelta(seconds=0,microseconds=319579)
+    test_lanl_time = timedelta(seconds=2,microseconds=919579)
+    test_lanld_time = timedelta(seconds=3,microseconds=19579)
+
+    train_time_list = [fir_time, iir_time, drnn_time, fcn_time, vanillaL_time, vanillaNL_time, lanl_time, lanld_time]
+    test_time_list = [test_fir_time, test_iir_time, test_drnn_time, test_fcn_time, test_vanillaL_time, test_vanillaNL_time, test_lanl_time, test_lanld_time]
     timing = [train_time_list, test_time_list]
 
     # Load Results DRNN
@@ -187,7 +207,7 @@ if __name__ == "__main__":
                              np.concatenate((test_Multibranch_LANL_nv1[2], test_Multibranch_LANL_nv1[2]))]
 
     # Load Results Multibranch LANLD
-    with open('test_results_' + dl_experiments[0] + '_nv1.pkl', 'rb') as input:
+    with open('test_results_' + dl_experiments[5] + '_nv1.pkl', 'rb') as input:
         test_Multibranch_LANLD_nv1 = pickle.load(input)
     #with open('test_results_' + dl_experiments[5] + '_nv2.pkl', 'rb') as input:
     #    test_Multibranch_LANLD_nv2 = pickle.load(input)
@@ -221,40 +241,40 @@ if __name__ == "__main__":
 
     print("VISUALISING")
 
-    signals_index = np.array([110, 210, 410, 810, 1610, 3210, 6410, 12810]) + 10
+    #signals_index = np.array([110, 210, 410, 810, 1610, 3210, 6410, 12810]) + 10
 
-    ecg_signals2plot = []
-    ecgbl_signals2plot = []
-    dl_signals2plot = []
-    fil_signals2plot = []
+    #ecg_signals2plot = []
+    #ecgbl_signals2plot = []
+    #dl_signals2plot = []
+    #fil_signals2plot = []
 
-    signal_amount = 10
+    #signal_amount = 10
 
-    [X_test, y_test, y_pred] = test_Multibranch_LANLD
-    for id in range(len(X_test)):
-        #print(X_test[id])
-        ecgbl_signals2plot.append(X_test[id])
-        ecg_signals2plot.append(y_test[id])
-        dl_signals2plot.append(y_pred[id])
+    #[X_test, y_test, y_pred] = test_Multibranch_LANLD
+    #for id in range(len(X_test)):
+    #    #print(X_test[id])
+    #    ecgbl_signals2plot.append(X_test[id])
+    #    ecg_signals2plot.append(y_test[id])
+    #    dl_signals2plot.append(y_pred[id])
 
-    [X_test, y_test, y_filter] = test_IIR
-    for id in range(len(X_test)):
-        fil_signals2plot.append(y_filter[id])
+    #[X_test, y_test, y_filter] = test_IIR
+    #for id in range(len(X_test)):
+    #    fil_signals2plot.append(y_filter[id])
 
-    for i in range(len(X_test)):
-        vs.ecg_view(ecg=ecg_signals2plot[i],
-                    ecg_blw=ecgbl_signals2plot[i],
-                    ecg_dl=dl_signals2plot[i],
-                    ecg_f=fil_signals2plot[i],
-                    signal_name="a",
-                    beat_no=1)
+    #for i in range(len(X_test)):
+    #    vs.ecg_view(ecg=ecg_signals2plot[i],
+    #                ecg_blw=ecgbl_signals2plot[i],
+    #                ecg_dl=dl_signals2plot[i],
+    #                ecg_f=fil_signals2plot[i],
+    #                signal_name="a",
+    #                beat_no=1)
 
-        vs.ecg_view_diff(ecg=ecg_signals2plot[i],
-                         ecg_blw=ecgbl_signals2plot[i],
-                         ecg_dl=dl_signals2plot[i],
-                         ecg_f=fil_signals2plot[i],
-                         signal_name="h",
-                         beat_no=1)
+    #    vs.ecg_view_diff(ecg=ecg_signals2plot[i],
+    #                     ecg_blw=ecgbl_signals2plot[i],
+    #                     ecg_dl=dl_signals2plot[i],
+    #                     ecg_f=fil_signals2plot[i],
+    #                     signal_name="h",
+    #                     beat_no=1)
 
     ####### Calculate Metrics #######
 
@@ -443,7 +463,7 @@ if __name__ == "__main__":
             MAD_seg[idx_seg] = []
             PRD_seg[idx_seg] = []
             COS_SIM_seg[idx_seg] = []
-            for idx in range(len(rnd_test)):
+            for idx in range(len(SSD_all[0])):
                 # Object under analysis (oua)
                 # SSD
                 oua = SSD_all[idx_exp][idx]
@@ -468,7 +488,7 @@ if __name__ == "__main__":
         # Processing the last index
         # SSD
         SSD_seg[-1] = []
-        for idx in range(len(rnd_test)):
+        for idx in range(len(SSD_all[0])):
             # Object under analysis
             oua = SSD_all[idx_exp][idx]
             if rnd_test[idx] > segm[-2]:
@@ -478,7 +498,7 @@ if __name__ == "__main__":
 
         # MAD
         MAD_seg[-1] = []
-        for idx in range(len(rnd_test)):
+        for idx in range(len(SSD_all[0])):
             # Object under analysis
             oua = MAD_all[idx_exp][idx]
             if rnd_test[idx] > segm[-2]:
@@ -488,7 +508,7 @@ if __name__ == "__main__":
 
         # PRD
         PRD_seg[-1] = []
-        for idx in range(len(rnd_test)):
+        for idx in range(len(SSD_all[0])):
             # Object under analysis
             oua = PRD_all[idx_exp][idx]
             if rnd_test[idx] > segm[-2]:
@@ -498,7 +518,7 @@ if __name__ == "__main__":
 
         # COS SIM
         COS_SIM_seg[-1] = []
-        for idx in range(len(rnd_test)):
+        for idx in range(len(SSD_all[0])):
             # Object under analysis
             oua = COS_SIM_all[idx_exp][idx]
             if rnd_test[idx] > segm[-2]:

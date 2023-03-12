@@ -17,6 +17,8 @@ from sklearn.model_selection import train_test_split
 
 import deepFilter.dl_models as models
 
+import numpy as np
+
 import os
 
 os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
@@ -89,7 +91,7 @@ def train_dl(Dataset, experiment, signal_size=512):
 
     model.summary()
 
-    epochs = 1000 #int(1e5)  # 100000
+    epochs = 10000 #int(1e5)  # 100000
     # epochs = 100
     batch_size = 128
     lr = 1e-3
@@ -150,15 +152,17 @@ def train_dl(Dataset, experiment, signal_size=512):
     # tensorboard --logdir=./runs
 
     # GPU
-    model.fit(x=X_train, y=y_train,
+    history = model.fit(x=X_train, y=y_train,
               validation_data=(X_val, y_val),
               batch_size=batch_size,
               epochs=epochs,
               verbose=1,
-              callbacks=[early_stop,
-                         reduce_lr,
-                         checkpoint,
+              callbacks=[checkpoint,
                          tboard])
+    for k in history.history.keys():
+        #print(k)
+        #print(history.history[k])
+        np.savetxt(k+'.txt', history.history[k], fmt='%f')
 
     print("FINISHED")
 
