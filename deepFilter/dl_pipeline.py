@@ -91,7 +91,7 @@ def train_dl(Dataset, experiment, signal_size=512):
 
     model.summary()
 
-    epochs = 10000 #int(1e5)  # 100000
+    epochs = 1000 #int(1e5)  # 100000
     # epochs = 100
     batch_size = 128
     lr = 1e-3

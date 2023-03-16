@@ -380,7 +380,7 @@ def deep_filter_model_I_LANL_dilated(signal_size=512):
     tensor = BatchNormalization()(tensor)
     predictions = Conv1D(filters=1,
                     kernel_size=9,
-                    activation='sigmoid',
+                    activation='linear',
                     strides=1,
                     padding='same')(tensor)
 

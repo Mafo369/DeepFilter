@@ -12,7 +12,7 @@
 #===========================================================
 
 import _pickle as pickle
-from datetime import datetime, timedelta
+from datetime import datetime
 import time
 import numpy as np
 
@@ -29,11 +29,11 @@ from Data_Preparation.PCG_data_loader import load_PCG
 if __name__ == "__main__":
 
     dl_experiments = [
-                      'DRNN',
-                      'FCN-DAE',
-                      'Vanilla L',
-                      'Vanilla NL',
-                      'Multibranch LANL',
+                      #'DRNN',
+                      #'FCN-DAE',
+                      #'Vanilla L',
+                      #'Vanilla NL',
+                      #'Multibranch LANL',
                       'Multibranch LANLD'
                       ]
 
@@ -53,33 +53,34 @@ if __name__ == "__main__":
         #with open('data/dataset_nv' + str(nv) + '.pkl', 'rb') as input:
         #    Dataset = pickle.load(input)
 
-        #Dataset = load_PCG() 
+        Dataset = load_PCG() 
 
         train_time_list = []
         test_time_list = []
 
-        #for experiment in range(len(dl_experiments)):
-        #    start_train = datetime.now()
-        #    train_dl(Dataset, dl_experiments[experiment])
-        #    end_train = datetime.now()
-        #    train_time_list.append(end_train - start_train)
+        for experiment in range(len(dl_experiments)):
+            start_train = datetime.now()
+            train_dl(Dataset, dl_experiments[experiment])
+            end_train = datetime.now()
+            train_time_list.append(end_train - start_train)
 
-        #    start_test = datetime.now()
-        #    [X_test, y_test, y_pred] = test_dl(Dataset, dl_experiments[experiment])
-        #    end_test = datetime.now()
-        #    test_time_list.append(end_test - start_test)
+            start_test = datetime.now()
+            [X_test, y_test, y_pred] = test_dl(Dataset, dl_experiments[experiment])
+            end_test = datetime.now()
+            test_time_list.append(end_test - start_test)
 
-        #    test_results = [X_test, y_test, y_pred]
+            test_results = [X_test, y_test, y_pred]
 
-        #    # Save Results
-        #    with open('test_results_' + dl_experiments[experiment] + '_nv' + str(nv) + '.pkl', 'wb') as output:  # Overwrites any existing file.
-        #        pickle.dump(test_results, output)
-        #    print('Results from experiment ' + dl_experiments[experiment] + '_nv' + str(nv) + ' saved')
+            # Save Results
+            with open('test_results_' + dl_experiments[experiment] + '_nv' + str(nv) + '.pkl', 'wb') as output:  # Overwrites any existing file.
+                pickle.dump(test_results, output)
+            print('Results from experiment ' + dl_experiments[experiment] + '_nv' + str(nv) + ' saved')
 
+            #time.sleep(60)
 
-        ## Classical Filters
+        # Classical Filters
 
-        ## FIR
+        # FIR
         #start_test = datetime.now()
         #[X_test_f, y_test_f, y_filter] = FIR_test_Dataset(Dataset)
         #end_test = datetime.now()
@@ -93,7 +94,7 @@ if __name__ == "__main__":
         #    pickle.dump(test_results_FIR, output)
         #print('Results from experiment FIR filter nv ' + str(nv) + ' saved')
 
-        ### IIR
+        ## IIR
         #start_test = datetime.now()
         #[X_test_f, y_test_f, y_filter] = IIR_test_Dataset(Dataset)
         #end_test = datetime.now()
@@ -102,16 +103,16 @@ if __name__ == "__main__":
 
         #test_results_IIR = [X_test_f, y_test_f, y_filter]
 
-        ### Save IIR filter results
+        ## Save IIR filter results
         #with open('test_results_IIR_nv' + str(nv) + '.pkl', 'wb') as output:  # Overwrites any existing file.
         #    pickle.dump(test_results_IIR, output)
         #print('Results from experiment IIR filter nv ' + str(nv) + ' saved')
 
-        ### Saving timing list
-        #timing = [train_time_list, test_time_list]
-        #with open('timing_nv' + str(nv) + '.pkl', 'wb') as output:  # Overwrites any existing file.
-        #    pickle.dump(timing, output)
-        #print('Timing nv ' + str(nv) + ' saved')
+        ## Saving timing list
+        timing = [train_time_list, test_time_list]
+        with open('timing_nv' + str(nv) + '.pkl', 'wb') as output:  # Overwrites any existing file.
+            pickle.dump(timing, output)
+        print('Timing nv ' + str(nv) + ' saved')
 
 
     ####### LOAD EXPERIMENTS #######
@@ -134,80 +135,60 @@ if __name__ == "__main__":
     for i in range(len(test_time_list_nv1)):
         test_time_list.append(test_time_list_nv1[i])
 
-    fir_time = timedelta(hours=0)
-    iir_time = timedelta(hours=0)
-    drnn_time = timedelta(seconds=55,microseconds=202438)
-    fcn_time = timedelta(seconds=11,microseconds=134003)
-    vanillaL_time = timedelta(seconds=4,microseconds=204968)
-    vanillaNL_time = timedelta(seconds=33,microseconds=44233)
-    lanl_time = timedelta(seconds=54,microseconds=437036)
-    lanld_time = timedelta(hours=1, minutes=4,seconds=26,microseconds=71243)
-
-    test_fir_time = timedelta(seconds=1,microseconds=319579)
-    test_iir_time = timedelta(seconds=0,microseconds=19579)
-    test_drnn_time = timedelta(seconds=0,microseconds=519579)
-    test_fcn_time = timedelta(seconds=2,microseconds=519579)
-    test_vanillaL_time = timedelta(seconds=0,microseconds=319579)
-    test_vanillaNL_time = timedelta(seconds=0,microseconds=319579)
-    test_lanl_time = timedelta(seconds=2,microseconds=919579)
-    test_lanld_time = timedelta(seconds=3,microseconds=19579)
-
-    train_time_list = [fir_time, iir_time, drnn_time, fcn_time, vanillaL_time, vanillaNL_time, lanl_time, lanld_time]
-    test_time_list = [test_fir_time, test_iir_time, test_drnn_time, test_fcn_time, test_vanillaL_time, test_vanillaNL_time, test_lanl_time, test_lanld_time]
     timing = [train_time_list, test_time_list]
 
     # Load Results DRNN
-    with open('test_results_' + dl_experiments[0] + '_nv1.pkl', 'rb') as input:
-        test_DRNN_nv1 = pickle.load(input)
+    #with open('test_results_' + dl_experiments[0] + '_nv1.pkl', 'rb') as input:
+    #    test_DRNN_nv1 = pickle.load(input)
     #with open('test_results_' + dl_experiments[0] + '_nv2.pkl', 'rb') as input:
     #    test_DRNN_nv2 = pickle.load(input)
 
-    test_DRNN = [np.concatenate((test_DRNN_nv1[0], test_DRNN_nv1[0])),
-                 np.concatenate((test_DRNN_nv1[1], test_DRNN_nv1[1])),
-                 np.concatenate((test_DRNN_nv1[2], test_DRNN_nv1[2]))]
+    #test_DRNN = [np.concatenate((test_DRNN_nv1[0], test_DRNN_nv2[0])),
+    #             np.concatenate((test_DRNN_nv1[1], test_DRNN_nv2[1])),
+    #             np.concatenate((test_DRNN_nv1[2], test_DRNN_nv2[2]))]
 
-    # Load Results FCN_DAE
-    with open('test_results_' + dl_experiments[1] + '_nv1.pkl', 'rb') as input:
-        test_FCN_DAE_nv1 = pickle.load(input)
+    ## Load Results FCN_DAE
+    #with open('test_results_' + dl_experiments[1] + '_nv1.pkl', 'rb') as input:
+    #    test_FCN_DAE_nv1 = pickle.load(input)
     #with open('test_results_' + dl_experiments[1] + '_nv2.pkl', 'rb') as input:
     #    test_FCN_DAE_nv2 = pickle.load(input)
 
-    test_FCN_DAE = [np.concatenate((test_FCN_DAE_nv1[0], test_FCN_DAE_nv1[0])),
-                    np.concatenate((test_FCN_DAE_nv1[1], test_FCN_DAE_nv1[1])),
-                    np.concatenate((test_FCN_DAE_nv1[2], test_FCN_DAE_nv1[2]))]
+    #test_FCN_DAE = [np.concatenate((test_FCN_DAE_nv1[0], test_FCN_DAE_nv2[0])),
+    #                np.concatenate((test_FCN_DAE_nv1[1], test_FCN_DAE_nv2[1])),
+    #                np.concatenate((test_FCN_DAE_nv1[2], test_FCN_DAE_nv2[2]))]
 
-    # Load Results Vanilla L
-    with open('test_results_' + dl_experiments[2] + '_nv1.pkl', 'rb') as input:
-        test_Vanilla_L_nv1 = pickle.load(input)
+    ## Load Results Vanilla L
+    #with open('test_results_' + dl_experiments[2] + '_nv1.pkl', 'rb') as input:
+    #    test_Vanilla_L_nv1 = pickle.load(input)
     #with open('test_results_' + dl_experiments[2] + '_nv2.pkl', 'rb') as input:
     #    test_Vanilla_L_nv2 = pickle.load(input)
 
-    test_Vanilla_L = [np.concatenate((test_Vanilla_L_nv1[0], test_Vanilla_L_nv1[0])),
-                      np.concatenate((test_Vanilla_L_nv1[1], test_Vanilla_L_nv1[1])),
-                      np.concatenate((test_Vanilla_L_nv1[2], test_Vanilla_L_nv1[2]))]
+    #test_Vanilla_L = [np.concatenate((test_Vanilla_L_nv1[0], test_Vanilla_L_nv2[0])),
+    #                  np.concatenate((test_Vanilla_L_nv1[1], test_Vanilla_L_nv2[1])),
+    #                  np.concatenate((test_Vanilla_L_nv1[2], test_Vanilla_L_nv2[2]))]
 
-    # Load Results Exp Vanilla NL
-    with open('test_results_' + dl_experiments[3] + '_nv1.pkl', 'rb') as input:
-        test_Vanilla_NL_nv1 = pickle.load(input)
+    ## Load Results Exp Vanilla NL
+    #with open('test_results_' + dl_experiments[3] + '_nv1.pkl', 'rb') as input:
+    #    test_Vanilla_NL_nv1 = pickle.load(input)
     #with open('test_results_' + dl_experiments[3] + '_nv2.pkl', 'rb') as input:
     #    test_Vanilla_NL_nv2 = pickle.load(input)
 
-    test_Vanilla_NL = [np.concatenate((test_Vanilla_NL_nv1[0], test_Vanilla_NL_nv1[0])),
-                       np.concatenate((test_Vanilla_NL_nv1[1], test_Vanilla_NL_nv1[1])),
-                       np.concatenate((test_Vanilla_NL_nv1[2], test_Vanilla_NL_nv1[2]))]
+    #test_Vanilla_NL = [np.concatenate((test_Vanilla_NL_nv1[0], test_Vanilla_NL_nv2[0])),
+    #                   np.concatenate((test_Vanilla_NL_nv1[1], test_Vanilla_NL_nv2[1])),
+    #                   np.concatenate((test_Vanilla_NL_nv1[2], test_Vanilla_NL_nv2[2]))]
 
-    # Load Results Multibranch LANL
-    with open('test_results_' + dl_experiments[4] + '_nv1.pkl', 'rb') as input:
-        test_Multibranch_LANL_nv1 = pickle.load(input)
+    ## Load Results Multibranch LANL
+    #with open('test_results_' + dl_experiments[4] + '_nv1.pkl', 'rb') as input:
+    #    test_Multibranch_LANL_nv1 = pickle.load(input)
     #with open('test_results_' + dl_experiments[4] + '_nv2.pkl', 'rb') as input:
     #    test_Multibranch_LANL_nv2 = pickle.load(input)
 
-    test_Multibranch_LANL = [np.concatenate((test_Multibranch_LANL_nv1[0], test_Multibranch_LANL_nv1[0])),
-                             np.concatenate((test_Multibranch_LANL_nv1[1], test_Multibranch_LANL_nv1[1])),
-                             np.concatenate((test_Multibranch_LANL_nv1[2], test_Multibranch_LANL_nv1[2]))]
+    #test_Multibranch_LANL = [np.concatenate((test_Multibranch_LANL_nv1[0], test_Multibranch_LANL_nv2[0])),
+    #                         np.concatenate((test_Multibranch_LANL_nv1[1], test_Multibranch_LANL_nv2[1])),
+    #                         np.concatenate((test_Multibranch_LANL_nv1[2], test_Multibranch_LANL_nv2[2]))]
 
     # Load Results Multibranch LANLD
-    with open('test_results_' + dl_experiments[5] + '_nv1.pkl', 'rb') as input:
+    with open('test_results_' + dl_experiments[0] + '_nv1.pkl', 'rb') as input:
         test_Multibranch_LANLD_nv1 = pickle.load(input)
     #with open('test_results_' + dl_experiments[5] + '_nv2.pkl', 'rb') as input:
     #    test_Multibranch_LANLD_nv2 = pickle.load(input)
@@ -217,14 +198,14 @@ if __name__ == "__main__":
                               np.concatenate((test_Multibranch_LANLD_nv1[2],test_Multibranch_LANLD_nv1[2] ))]
 
     # Load Result FIR Filter
-    with open('test_results_FIR_nv1.pkl', 'rb') as input:
-        test_FIR_nv1 = pickle.load(input)
+    #with open('test_results_FIR_nv1.pkl', 'rb') as input:
+    #    test_FIR_nv1 = pickle.load(input)
     #with open('test_results_FIR_nv2.pkl', 'rb') as input:
     #    test_FIR_nv2 = pickle.load(input)
 
-    test_FIR = [np.concatenate((test_FIR_nv1[0], test_FIR_nv1[0])),
-                np.concatenate((test_FIR_nv1[1], test_FIR_nv1[1])),
-                np.concatenate((test_FIR_nv1[2], test_FIR_nv1[2]))]
+    #test_FIR = [np.concatenate((test_FIR_nv1[0], test_FIR_nv2[0])),
+    #            np.concatenate((test_FIR_nv1[1], test_FIR_nv2[1])),
+    #            np.concatenate((test_FIR_nv1[2], test_FIR_nv2[2]))]
 
     # Load Result IIR Filter
     with open('test_results_IIR_nv1.pkl', 'rb') as input:
@@ -241,40 +222,40 @@ if __name__ == "__main__":
 
     print("VISUALISING")
 
-    #signals_index = np.array([110, 210, 410, 810, 1610, 3210, 6410, 12810]) + 10
+    signals_index = np.array([110, 210, 410, 810, 1610, 3210, 6410, 12810]) + 10
 
-    #ecg_signals2plot = []
-    #ecgbl_signals2plot = []
-    #dl_signals2plot = []
-    #fil_signals2plot = []
+    ecg_signals2plot = []
+    ecgbl_signals2plot = []
+    dl_signals2plot = []
+    fil_signals2plot = []
 
-    #signal_amount = 10
+    signal_amount = 10
 
-    #[X_test, y_test, y_pred] = test_Multibranch_LANLD
-    #for id in range(len(X_test)):
-    #    #print(X_test[id])
-    #    ecgbl_signals2plot.append(X_test[id])
-    #    ecg_signals2plot.append(y_test[id])
-    #    dl_signals2plot.append(y_pred[id])
+    [X_test, y_test, y_pred] = test_Multibranch_LANLD
+    for id in range(len(X_test)):
+        #print(X_test[id])
+        ecgbl_signals2plot.append(X_test[id])
+        ecg_signals2plot.append(y_test[id])
+        dl_signals2plot.append(y_pred[id])
 
-    #[X_test, y_test, y_filter] = test_IIR
-    #for id in range(len(X_test)):
-    #    fil_signals2plot.append(y_filter[id])
+    [X_test, y_test, y_filter] = test_IIR
+    for id in range(len(X_test)):
+        fil_signals2plot.append(y_filter[id])
 
-    #for i in range(len(X_test)):
-    #    vs.ecg_view(ecg=ecg_signals2plot[i],
-    #                ecg_blw=ecgbl_signals2plot[i],
-    #                ecg_dl=dl_signals2plot[i],
-    #                ecg_f=fil_signals2plot[i],
-    #                signal_name="a",
-    #                beat_no=1)
+    for i in range(len(X_test)):
+        vs.ecg_view(ecg=ecg_signals2plot[i],
+                    ecg_blw=ecgbl_signals2plot[i],
+                    ecg_dl=dl_signals2plot[i],
+                    ecg_f=fil_signals2plot[i],
+                    signal_name="a",
+                    beat_no=1)
 
-    #    vs.ecg_view_diff(ecg=ecg_signals2plot[i],
-    #                     ecg_blw=ecgbl_signals2plot[i],
-    #                     ecg_dl=dl_signals2plot[i],
-    #                     ecg_f=fil_signals2plot[i],
-    #                     signal_name="h",
-    #                     beat_no=1)
+        vs.ecg_view_diff(ecg=ecg_signals2plot[i],
+                         ecg_blw=ecgbl_signals2plot[i],
+                         ecg_dl=dl_signals2plot[i],
+                         ecg_f=fil_signals2plot[i],
+                         signal_name="h",
+                         beat_no=1)
 
     ####### Calculate Metrics #######
 
@@ -284,67 +265,67 @@ if __name__ == "__main__":
 
     # Exp FCN-DAE
 
-    [X_test, y_test, y_pred] = test_DRNN
+    #[X_test, y_test, y_pred] = test_DRNN
 
-    SSD_values_DL_DRNN = SSD(y_test, y_pred)
+    #SSD_values_DL_DRNN = SSD(y_test, y_pred)
 
-    MAD_values_DL_DRNN = MAD(y_test, y_pred)
+    #MAD_values_DL_DRNN = MAD(y_test, y_pred)
 
-    PRD_values_DL_DRNN = PRD(y_test, y_pred)
+    #PRD_values_DL_DRNN = PRD(y_test, y_pred)
 
-    COS_SIM_values_DL_DRNN = COS_SIM(y_test, y_pred)
-
-
-    # Exp FCN-DAE
-
-    [X_test, y_test, y_pred] = test_FCN_DAE
-
-    SSD_values_DL_FCN_DAE = SSD(y_test, y_pred)
-
-    MAD_values_DL_FCN_DAE = MAD(y_test, y_pred)
-
-    PRD_values_DL_FCN_DAE = PRD(y_test, y_pred)
-
-    COS_SIM_values_DL_FCN_DAE = COS_SIM(y_test, y_pred)
+    #COS_SIM_values_DL_DRNN = COS_SIM(y_test, y_pred)
 
 
-    # Vanilla L
+    ## Exp FCN-DAE
 
-    [X_test, y_test, y_pred] = test_Vanilla_L
+    #[X_test, y_test, y_pred] = test_FCN_DAE
 
-    SSD_values_DL_exp_1 = SSD(y_test, y_pred)
+    #SSD_values_DL_FCN_DAE = SSD(y_test, y_pred)
 
-    MAD_values_DL_exp_1 = MAD(y_test, y_pred)
+    #MAD_values_DL_FCN_DAE = MAD(y_test, y_pred)
 
-    PRD_values_DL_exp_1 = PRD(y_test, y_pred)
+    #PRD_values_DL_FCN_DAE = PRD(y_test, y_pred)
 
-    COS_SIM_values_DL_exp_1 = COS_SIM(y_test, y_pred)
-
-
-    # Vanilla_NL
-
-    [X_test, y_test, y_pred] = test_Vanilla_NL
-
-    SSD_values_DL_exp_2 = SSD(y_test, y_pred)
-
-    MAD_values_DL_exp_2 = MAD(y_test, y_pred)
-
-    PRD_values_DL_exp_2 = PRD(y_test, y_pred)
-
-    COS_SIM_values_DL_exp_2 = COS_SIM(y_test, y_pred)
+    #COS_SIM_values_DL_FCN_DAE = COS_SIM(y_test, y_pred)
 
 
-    # Multibranch_LANL
+    ## Vanilla L
 
-    [X_test, y_test, y_pred] = test_Multibranch_LANL
+    #[X_test, y_test, y_pred] = test_Vanilla_L
 
-    SSD_values_DL_exp_3 = SSD(y_test, y_pred)
+    #SSD_values_DL_exp_1 = SSD(y_test, y_pred)
 
-    MAD_values_DL_exp_3 = MAD(y_test, y_pred)
+    #MAD_values_DL_exp_1 = MAD(y_test, y_pred)
 
-    PRD_values_DL_exp_3 = PRD(y_test, y_pred)
+    #PRD_values_DL_exp_1 = PRD(y_test, y_pred)
 
-    COS_SIM_values_DL_exp_3 = COS_SIM(y_test, y_pred)
+    #COS_SIM_values_DL_exp_1 = COS_SIM(y_test, y_pred)
+
+
+    ## Vanilla_NL
+
+    #[X_test, y_test, y_pred] = test_Vanilla_NL
+
+    #SSD_values_DL_exp_2 = SSD(y_test, y_pred)
+
+    #MAD_values_DL_exp_2 = MAD(y_test, y_pred)
+
+    #PRD_values_DL_exp_2 = PRD(y_test, y_pred)
+
+    #COS_SIM_values_DL_exp_2 = COS_SIM(y_test, y_pred)
+
+
+    ## Multibranch_LANL
+
+    #[X_test, y_test, y_pred] = test_Multibranch_LANL
+
+    #SSD_values_DL_exp_3 = SSD(y_test, y_pred)
+
+    #MAD_values_DL_exp_3 = MAD(y_test, y_pred)
+
+    #PRD_values_DL_exp_3 = PRD(y_test, y_pred)
+
+    #COS_SIM_values_DL_exp_3 = COS_SIM(y_test, y_pred)
 
 
     # Multibranch_LANLD
@@ -363,73 +344,73 @@ if __name__ == "__main__":
     # Digital Filtering
 
     # FIR Filtering Metrics
-    [X_test, y_test, y_filter] = test_FIR
+    #[X_test, y_test, y_filter] = test_FIR
 
-    SSD_values_FIR = SSD(y_test, y_filter)
+    #SSD_values_FIR = SSD(y_test, y_filter)
 
-    MAD_values_FIR = MAD(y_test, y_filter)
+    #MAD_values_FIR = MAD(y_test, y_filter)
 
-    PRD_values_FIR = PRD(y_test, y_filter)
+    #PRD_values_FIR = PRD(y_test, y_filter)
 
-    COS_SIM_values_FIR = COS_SIM(y_test, y_filter)
+    #COS_SIM_values_FIR = COS_SIM(y_test, y_filter)
 
 
-    # IIR Filtering Metrics (Best)
-    [X_test, y_test, y_filter] = test_IIR
+    ## IIR Filtering Metrics (Best)
+    #[X_test, y_test, y_filter] = test_IIR
 
-    SSD_values_IIR = SSD(y_test, y_filter)
+    #SSD_values_IIR = SSD(y_test, y_filter)
 
-    MAD_values_IIR = MAD(y_test, y_filter)
+    #MAD_values_IIR = MAD(y_test, y_filter)
 
-    PRD_values_IIR = PRD(y_test, y_filter)
+    #PRD_values_IIR = PRD(y_test, y_filter)
 
-    COS_SIM_values_IIR = COS_SIM(y_test, y_filter)
+    #COS_SIM_values_IIR = COS_SIM(y_test, y_filter)
 
 
     ####### Results Visualization #######
 
-    SSD_all = [SSD_values_FIR,
-               SSD_values_IIR,
-               SSD_values_DL_FCN_DAE,
-               SSD_values_DL_DRNN,
-               SSD_values_DL_exp_1,
-               SSD_values_DL_exp_2,
-               SSD_values_DL_exp_3,
+    SSD_all = [#SSD_values_FIR,
+               #SSD_values_IIR,
+               #SSD_values_DL_FCN_DAE,
+               #SSD_values_DL_DRNN,
+               #SSD_values_DL_exp_1,
+               #SSD_values_DL_exp_2,
+               #SSD_values_DL_exp_3,
                SSD_values_DL_exp_4,
                ]
 
-    MAD_all = [MAD_values_FIR,
-               MAD_values_IIR,
-               MAD_values_DL_FCN_DAE,
-               MAD_values_DL_DRNN,
-               MAD_values_DL_exp_1,
-               MAD_values_DL_exp_2,
-               MAD_values_DL_exp_3,
+    MAD_all = [#MAD_values_FIR,
+               #MAD_values_IIR,
+               #MAD_values_DL_FCN_DAE,
+               #MAD_values_DL_DRNN,
+               #MAD_values_DL_exp_1,
+               #MAD_values_DL_exp_2,
+               #MAD_values_DL_exp_3,
                MAD_values_DL_exp_4,
                ]
 
-    PRD_all = [PRD_values_FIR,
-               PRD_values_IIR,
-               PRD_values_DL_FCN_DAE,
-               PRD_values_DL_DRNN,
-               PRD_values_DL_exp_1,
-               PRD_values_DL_exp_2,
-               PRD_values_DL_exp_3,
+    PRD_all = [#PRD_values_FIR,
+               #PRD_values_IIR,
+               #PRD_values_DL_FCN_DAE,
+               #PRD_values_DL_DRNN,
+               #PRD_values_DL_exp_1,
+               #PRD_values_DL_exp_2,
+               #PRD_values_DL_exp_3,
                PRD_values_DL_exp_4,
                ]
 
-    COS_SIM_all = [COS_SIM_values_FIR,
-                   COS_SIM_values_IIR,
-                   COS_SIM_values_DL_FCN_DAE,
-                   COS_SIM_values_DL_DRNN,
-                   COS_SIM_values_DL_exp_1,
-                   COS_SIM_values_DL_exp_2,
-                   COS_SIM_values_DL_exp_3,
+    COS_SIM_all = [#COS_SIM_values_FIR,
+                   #COS_SIM_values_IIR,
+                   #COS_SIM_values_DL_FCN_DAE,
+                   #COS_SIM_values_DL_DRNN,
+                   #COS_SIM_values_DL_exp_1,
+                   #COS_SIM_values_DL_exp_2,
+                   #COS_SIM_values_DL_exp_3,
                    COS_SIM_values_DL_exp_4,
                    ]
 
 
-    Exp_names = ['FIR Filter','IIR Filter'] + dl_experiments
+    Exp_names = dl_experiments
     
     metrics = ['SSD', 'MAD', 'PRD', 'COS_SIM']
     metric_values = [SSD_all, MAD_all, PRD_all, COS_SIM_all]
@@ -445,7 +426,7 @@ if __name__ == "__main__":
     # Segmentation by noise amplitude
     rnd_test = np.load('rnd_test.npy')
 
-    rnd_test = np.concatenate([rnd_test, rnd_test])
+    rnd_test = np.concatenate([rnd_test])
 
     segm = [0.2, 0.6, 1.0, 1.5, 2.0]  # real number of segmentations is len(segmentations) - 1
     SSD_seg_all = []
@@ -463,7 +444,7 @@ if __name__ == "__main__":
             MAD_seg[idx_seg] = []
             PRD_seg[idx_seg] = []
             COS_SIM_seg[idx_seg] = []
-            for idx in range(len(SSD_all[0])):
+            for idx in range(len(rnd_test)):
                 # Object under analysis (oua)
                 # SSD
                 oua = SSD_all[idx_exp][idx]
@@ -488,7 +469,7 @@ if __name__ == "__main__":
         # Processing the last index
         # SSD
         SSD_seg[-1] = []
-        for idx in range(len(SSD_all[0])):
+        for idx in range(len(rnd_test)):
             # Object under analysis
             oua = SSD_all[idx_exp][idx]
             if rnd_test[idx] > segm[-2]:
@@ -498,7 +479,7 @@ if __name__ == "__main__":
 
         # MAD
         MAD_seg[-1] = []
-        for idx in range(len(SSD_all[0])):
+        for idx in range(len(rnd_test)):
             # Object under analysis
             oua = MAD_all[idx_exp][idx]
             if rnd_test[idx] > segm[-2]:
@@ -508,7 +489,7 @@ if __name__ == "__main__":
 
         # PRD
         PRD_seg[-1] = []
-        for idx in range(len(SSD_all[0])):
+        for idx in range(len(rnd_test)):
             # Object under analysis
             oua = PRD_all[idx_exp][idx]
             if rnd_test[idx] > segm[-2]:
@@ -518,7 +499,7 @@ if __name__ == "__main__":
 
         # COS SIM
         COS_SIM_seg[-1] = []
-        for idx in range(len(SSD_all[0])):
+        for idx in range(len(rnd_test)):
             # Object under analysis
             oua = COS_SIM_all[idx_exp][idx]
             if rnd_test[idx] > segm[-2]:
